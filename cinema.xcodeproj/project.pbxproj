@@ -12,6 +12,7 @@
 		2C70E4E9222130DA00185448 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4E7222130DA00185448 /* Main.storyboard */; };
 		2C70E4EB222130DB00185448 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4EA222130DB00185448 /* Assets.xcassets */; };
 		2C70E4EE222130DB00185448 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4EC222130DB00185448 /* LaunchScreen.storyboard */; };
+		9B194591F731F2EADFC49F45 /* Pods_cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E076EEF4ECF37076F04094 /* Pods_cinema.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		2C70E4EA222130DB00185448 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C70E4ED222130DB00185448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C70E4EF222130DB00185448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97E076EEF4ECF37076F04094 /* Pods_cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3966164E3D3FACBE66FA6D6 /* Pods-cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinema.debug.xcconfig"; path = "Target Support Files/Pods-cinema/Pods-cinema.debug.xcconfig"; sourceTree = "<group>"; };
+		DF4BBAD3D45D986BAF7CC136 /* Pods-cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinema.release.xcconfig"; path = "Target Support Files/Pods-cinema/Pods-cinema.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B194591F731F2EADFC49F45 /* Pods_cinema.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				2C70E4E2222130DA00185448 /* cinema */,
 				2C70E4E1222130DA00185448 /* Products */,
+				46920A5C83020F348C40FFFA /* Pods */,
+				8F8F7EC61CF852C1EBF0CDAC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,24 @@
 			path = cinema;
 			sourceTree = "<group>";
 		};
+		46920A5C83020F348C40FFFA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3966164E3D3FACBE66FA6D6 /* Pods-cinema.debug.xcconfig */,
+				DF4BBAD3D45D986BAF7CC136 /* Pods-cinema.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8F8F7EC61CF852C1EBF0CDAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97E076EEF4ECF37076F04094 /* Pods_cinema.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C70E4F2222130DB00185448 /* Build configuration list for PBXNativeTarget "cinema" */;
 			buildPhases = (
+				7B63B8E59D91D23CD5979075 /* [CP] Check Pods Manifest.lock */,
 				2C70E4DC222130DA00185448 /* Sources */,
 				2C70E4DD222130DA00185448 /* Frameworks */,
 				2C70E4DE222130DA00185448 /* Resources */,
+				BBC52A0003DD603C59F83A48 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B63B8E59D91D23CD5979075 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cinema-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBC52A0003DD603C59F83A48 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cinema/Pods-cinema-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cinema/Pods-cinema-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C70E4DC222130DA00185448 /* Sources */ = {
@@ -280,6 +354,7 @@
 		};
 		2C70E4F3222130DB00185448 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3966164E3D3FACBE66FA6D6 /* Pods-cinema.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +373,7 @@
 		};
 		2C70E4F4222130DB00185448 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF4BBAD3D45D986BAF7CC136 /* Pods-cinema.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
