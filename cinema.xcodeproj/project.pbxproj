@@ -7,22 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0E1CFC222C69380074C3BA /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E1CFB222C69380074C3BA /* BorderedButton.swift */; };
+		2C0E1CFE222C77DA0074C3BA /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E1CFD222C77DA0074C3BA /* SignInVC.swift */; };
+		2C0E1D00222C77EC0074C3BA /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E1CFF222C77EC0074C3BA /* SignUpVC.swift */; };
+		2C0E1D02222C78330074C3BA /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E1D01222C78330074C3BA /* UserData.swift */; };
+		2C1055CF222BFCB6006BA2C9 /* PopupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1055CE222BFCB6006BA2C9 /* PopupItem.swift */; };
+		2C1055D3222C60B9006BA2C9 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1055D2222C60B9006BA2C9 /* SignIn.storyboard */; };
+		2C58772E22595AB900F4CCB3 /* KeyboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C58772D22595AB900F4CCB3 /* KeyboardVC.swift */; };
+		2C587731225A311C00F4CCB3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C587730225A311C00F4CCB3 /* Constants.swift */; };
 		2C70E4E4222130DA00185448 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70E4E3222130DA00185448 /* AppDelegate.swift */; };
-		2C70E4E6222130DA00185448 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70E4E5222130DA00185448 /* ViewController.swift */; };
+		2C70E4E6222130DA00185448 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70E4E5222130DA00185448 /* RootVC.swift */; };
 		2C70E4E9222130DA00185448 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4E7222130DA00185448 /* Main.storyboard */; };
 		2C70E4EB222130DB00185448 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4EA222130DB00185448 /* Assets.xcassets */; };
 		2C70E4EE222130DB00185448 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4EC222130DB00185448 /* LaunchScreen.storyboard */; };
+		2CA775E52222E759003AE48C /* SidebarMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA775E42222E759003AE48C /* SidebarMenuVC.swift */; };
+		2CA775E72222EBA5003AE48C /* RevealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA775E62222EBA5003AE48C /* RevealVC.swift */; };
+		2CA775F722233EAB003AE48C /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA775F622233EAB003AE48C /* PopupVC.swift */; };
+		2CA775FC22234E12003AE48C /* Films.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CA775FB22234E12003AE48C /* Films.storyboard */; };
+		2CA775FE22235620003AE48C /* FilmsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA775FD22235620003AE48C /* FilmsListVC.swift */; };
+		2CA7760022245C67003AE48C /* FilmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA775FF22245C67003AE48C /* FilmVC.swift */; };
+		2CDCD207223EB9BF0067E111 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDCD206223EB9BF0067E111 /* Helpers.swift */; };
+		2CF5FA59225E1549005E8C4A /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5FA58225E1549005E8C4A /* CustomPickerView.swift */; };
+		2CF5FA5D225E1E46005E8C4A /* OtherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5FA5C225E1E46005E8C4A /* OtherData.swift */; };
+		2CF9E478223E56DF00227A57 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF9E477223E56DF00227A57 /* Requests.swift */; };
 		9B194591F731F2EADFC49F45 /* Pods_cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E076EEF4ECF37076F04094 /* Pods_cinema.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C0E1CFB222C69380074C3BA /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		2C0E1CFD222C77DA0074C3BA /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		2C0E1CFF222C77EC0074C3BA /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		2C0E1D01222C78330074C3BA /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		2C1055CE222BFCB6006BA2C9 /* PopupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupItem.swift; sourceTree = "<group>"; };
+		2C1055D2222C60B9006BA2C9 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		2C58772D22595AB900F4CCB3 /* KeyboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardVC.swift; sourceTree = "<group>"; };
+		2C587730225A311C00F4CCB3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C70E4E0222130DA00185448 /* cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cinema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C70E4E3222130DA00185448 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C70E4E5222130DA00185448 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2C70E4E5222130DA00185448 /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		2C70E4E8222130DA00185448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C70E4EA222130DB00185448 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C70E4ED222130DB00185448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C70E4EF222130DB00185448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CA775E42222E759003AE48C /* SidebarMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarMenuVC.swift; sourceTree = "<group>"; };
+		2CA775E62222EBA5003AE48C /* RevealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealVC.swift; sourceTree = "<group>"; };
+		2CA775F622233EAB003AE48C /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
+		2CA775FB22234E12003AE48C /* Films.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Films.storyboard; sourceTree = "<group>"; };
+		2CA775FD22235620003AE48C /* FilmsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsListVC.swift; sourceTree = "<group>"; };
+		2CA775FF22245C67003AE48C /* FilmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmVC.swift; sourceTree = "<group>"; };
+		2CDCD206223EB9BF0067E111 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		2CF5FA58225E1549005E8C4A /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		2CF5FA5C225E1E46005E8C4A /* OtherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherData.swift; sourceTree = "<group>"; };
+		2CF9E477223E56DF00227A57 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		97E076EEF4ECF37076F04094 /* Pods_cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3966164E3D3FACBE66FA6D6 /* Pods-cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinema.debug.xcconfig"; path = "Target Support Files/Pods-cinema/Pods-cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		DF4BBAD3D45D986BAF7CC136 /* Pods-cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinema.release.xcconfig"; path = "Target Support Files/Pods-cinema/Pods-cinema.release.xcconfig"; sourceTree = "<group>"; };
@@ -40,6 +76,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C1055CD222BFC64006BA2C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C1055CE222BFCB6006BA2C9 /* PopupItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C1055D0222C607E006BA2C9 /* SignInVC */ = {
+			isa = PBXGroup;
+			children = (
+				2C1055D2222C60B9006BA2C9 /* SignIn.storyboard */,
+				2C0E1CFD222C77DA0074C3BA /* SignInVC.swift */,
+				2C0E1CFF222C77EC0074C3BA /* SignUpVC.swift */,
+			);
+			path = SignInVC;
+			sourceTree = "<group>";
+		};
+		2C587732225B401000F4CCB3 /* CinemasVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CinemasVC;
+			sourceTree = "<group>";
+		};
 		2C70E4D7222130DA00185448 = {
 			isa = PBXGroup;
 			children = (
@@ -61,8 +122,17 @@
 		2C70E4E2222130DA00185448 /* cinema */ = {
 			isa = PBXGroup;
 			children = (
+				2C1055D0222C607E006BA2C9 /* SignInVC */,
+				2C587732225B401000F4CCB3 /* CinemasVC */,
+				2CA775EE22232CBE003AE48C /* FilmsVC */,
+				2C1055CD222BFC64006BA2C9 /* Model */,
+				2CA775F322232E1D003AE48C /* Utilities */,
+				2CA775ED22232C62003AE48C /* Components */,
+				2CA775EA2222FD94003AE48C /* Views */,
 				2C70E4E3222130DA00185448 /* AppDelegate.swift */,
-				2C70E4E5222130DA00185448 /* ViewController.swift */,
+				2C70E4E5222130DA00185448 /* RootVC.swift */,
+				2CA775E42222E759003AE48C /* SidebarMenuVC.swift */,
+				2CA775E62222EBA5003AE48C /* RevealVC.swift */,
 				2C70E4E7222130DA00185448 /* Main.storyboard */,
 				2C70E4EA222130DB00185448 /* Assets.xcassets */,
 				2C70E4EC222130DB00185448 /* LaunchScreen.storyboard */,
@@ -71,13 +141,52 @@
 			path = cinema;
 			sourceTree = "<group>";
 		};
+		2CA775EA2222FD94003AE48C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C0E1CFB222C69380074C3BA /* BorderedButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2CA775ED22232C62003AE48C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2CA775F622233EAB003AE48C /* PopupVC.swift */,
+				2C58772D22595AB900F4CCB3 /* KeyboardVC.swift */,
+				2CF5FA58225E1549005E8C4A /* CustomPickerView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2CA775EE22232CBE003AE48C /* FilmsVC */ = {
+			isa = PBXGroup;
+			children = (
+				2CA775FB22234E12003AE48C /* Films.storyboard */,
+				2CA775FD22235620003AE48C /* FilmsListVC.swift */,
+				2CA775FF22245C67003AE48C /* FilmVC.swift */,
+			);
+			path = FilmsVC;
+			sourceTree = "<group>";
+		};
+		2CA775F322232E1D003AE48C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2C0E1D01222C78330074C3BA /* UserData.swift */,
+				2CF9E477223E56DF00227A57 /* Requests.swift */,
+				2CDCD206223EB9BF0067E111 /* Helpers.swift */,
+				2C587730225A311C00F4CCB3 /* Constants.swift */,
+				2CF5FA5C225E1E46005E8C4A /* OtherData.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		46920A5C83020F348C40FFFA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				A3966164E3D3FACBE66FA6D6 /* Pods-cinema.debug.xcconfig */,
 				DF4BBAD3D45D986BAF7CC136 /* Pods-cinema.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -150,7 +259,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C70E4EE222130DB00185448 /* LaunchScreen.storyboard in Resources */,
+				2C1055D3222C60B9006BA2C9 /* SignIn.storyboard in Resources */,
 				2C70E4EB222130DB00185448 /* Assets.xcassets in Resources */,
+				2CA775FC22234E12003AE48C /* Films.storyboard in Resources */,
 				2C70E4E9222130DA00185448 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,12 +301,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-cinema/Pods-cinema-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/EmailValidator/EmailValidator.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmailValidator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -209,7 +324,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C70E4E6222130DA00185448 /* ViewController.swift in Sources */,
+				2C58772E22595AB900F4CCB3 /* KeyboardVC.swift in Sources */,
+				2C587731225A311C00F4CCB3 /* Constants.swift in Sources */,
+				2C70E4E6222130DA00185448 /* RootVC.swift in Sources */,
+				2C0E1CFC222C69380074C3BA /* BorderedButton.swift in Sources */,
+				2C0E1D02222C78330074C3BA /* UserData.swift in Sources */,
+				2CF9E478223E56DF00227A57 /* Requests.swift in Sources */,
+				2C0E1CFE222C77DA0074C3BA /* SignInVC.swift in Sources */,
+				2CF5FA5D225E1E46005E8C4A /* OtherData.swift in Sources */,
+				2CA775E72222EBA5003AE48C /* RevealVC.swift in Sources */,
+				2CF5FA59225E1549005E8C4A /* CustomPickerView.swift in Sources */,
+				2C1055CF222BFCB6006BA2C9 /* PopupItem.swift in Sources */,
+				2CA775FE22235620003AE48C /* FilmsListVC.swift in Sources */,
+				2CA775F722233EAB003AE48C /* PopupVC.swift in Sources */,
+				2CDCD207223EB9BF0067E111 /* Helpers.swift in Sources */,
+				2CA775E52222E759003AE48C /* SidebarMenuVC.swift in Sources */,
+				2C0E1D00222C77EC0074C3BA /* SignUpVC.swift in Sources */,
+				2CA7760022245C67003AE48C /* FilmVC.swift in Sources */,
 				2C70E4E4222130DA00185448 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
