@@ -32,7 +32,7 @@
                                         <rect key="frame" x="169" y="315" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.20784313730000001" green="0.20000000000000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.10980392160000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="DDc-Zh-XVu" firstAttribute="top" secondItem="hf0-9Q-prU" secondAttribute="bottom" constant="20" id="2fd-Dv-ETr"/>
                                     <constraint firstItem="DDc-Zh-XVu" firstAttribute="centerX" secondItem="HM7-OW-ix9" secondAttribute="centerX" id="B22-80-WYy"/>
@@ -79,7 +79,23 @@
                 <viewControllerPlaceholder storyboardIdentifier="filmsNavVC" storyboardName="Films" referencedIdentifier="filmsNavVC" id="2MH-LR-hL0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6I-hE-zmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="607"/>
+            <point key="canvasLocation" x="1006" y="721"/>
+        </scene>
+        <!--filterVC-->
+        <scene sceneID="aDi-Hn-zwO">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="filterVC" storyboardName="Filter" referencedIdentifier="filterVC" id="mrA-vE-ltM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9cU-5M-kAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1054" y="968"/>
+        </scene>
+        <!--cinemasNavVC-->
+        <scene sceneID="wb2-aN-meH">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="cinemasNavVC" storyboardName="Cinemas" referencedIdentifier="cinemasNavVC" id="GbK-od-gKF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hD0-p9-DQe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006" y="687"/>
         </scene>
         <!--signInNavVC-->
         <scene sceneID="fEy-Gl-4Hx">
@@ -87,7 +103,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="signInNavVC" storyboardName="SignIn" referencedIdentifier="signInNavVC" id="j1O-xP-38o" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nlK-Jr-ZPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1018" y="706"/>
+            <point key="canvasLocation" x="1005" y="574"/>
         </scene>
         <!--Sidebar MenuVC-->
         <scene sceneID="afX-M8-aOV">
@@ -108,7 +124,7 @@
                                 <rect key="frame" x="0.0" y="121" width="375" height="546"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="sidebarMenuCell" id="fT1-kn-IZR" customClass="SidebarMenuCell" customModule="cinema" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="sidebarMenuCell" id="fT1-kn-IZR" customClass="SidebarMenuCell" customModule="cinema" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fT1-kn-IZR" id="gaU-q4-xaY">
@@ -116,14 +132,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-ZR-7dr">
-                                                    <rect key="frame" x="16" y="12" width="283" height="21"/>
+                                                    <rect key="frame" x="16" y="13" width="283" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.23529411759999999" green="0.25490196079999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBM-FT-Bi8">
-                                                    <rect key="frame" x="16" y="45" width="283" height="1"/>
-                                                    <color key="backgroundColor" red="0.45098039220000002" green="0.52156862749999999" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <rect key="frame" x="16" y="45.5" width="359" height="1"/>
+                                                    <color key="backgroundColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="t9k-Zw-wda"/>
                                                     </constraints>
@@ -131,12 +147,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1Ie-ZR-7dr" firstAttribute="leading" secondItem="gaU-q4-xaY" secondAttribute="leading" constant="16" id="52k-qH-GHl"/>
-                                                <constraint firstAttribute="bottom" secondItem="XBM-FT-Bi8" secondAttribute="bottom" id="Ad4-oQ-iOT"/>
-                                                <constraint firstItem="1Ie-ZR-7dr" firstAttribute="top" secondItem="gaU-q4-xaY" secondAttribute="top" constant="12" id="JzD-3P-BaF"/>
+                                                <constraint firstAttribute="trailing" secondItem="XBM-FT-Bi8" secondAttribute="trailing" id="809-81-yZR"/>
+                                                <constraint firstItem="1Ie-ZR-7dr" firstAttribute="centerY" secondItem="gaU-q4-xaY" secondAttribute="centerY" id="NJS-IW-zmy"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Ie-ZR-7dr" secondAttribute="trailing" constant="76" id="a3J-V1-OZ7"/>
                                                 <constraint firstItem="XBM-FT-Bi8" firstAttribute="leading" secondItem="1Ie-ZR-7dr" secondAttribute="leading" id="g4J-xK-DeE"/>
-                                                <constraint firstItem="XBM-FT-Bi8" firstAttribute="top" secondItem="1Ie-ZR-7dr" secondAttribute="bottom" constant="12" id="jHV-Q9-8kc"/>
-                                                <constraint firstItem="XBM-FT-Bi8" firstAttribute="trailing" secondItem="1Ie-ZR-7dr" secondAttribute="trailing" id="qe4-uP-wuI"/>
+                                                <constraint firstAttribute="bottom" secondItem="XBM-FT-Bi8" secondAttribute="bottom" constant="-0.5" id="kfN-Ul-6HK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,7 +167,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.87450980389999999" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="eJS-To-1NG" firstAttribute="bottom" secondItem="kOv-8M-31q" secondAttribute="bottom" id="Hrx-w2-fAJ"/>
                             <constraint firstItem="eJS-To-1NG" firstAttribute="top" secondItem="jKt-3d-037" secondAttribute="bottom" constant="16" id="Txv-Tn-Y8S"/>
@@ -162,14 +177,6 @@
                             <constraint firstItem="jKt-3d-037" firstAttribute="top" secondItem="kOv-8M-31q" secondAttribute="top" constant="35" id="jSz-zb-MOO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kOv-8M-31q"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="fromColor">
-                                <color key="value" red="0.090196078430000007" green="0.25490196079999999" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="toColor">
-                                <color key="value" red="0.92549019610000005" green="0.35294117650000001" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="eJS-To-1NG" id="JaC-lu-4fA"/>

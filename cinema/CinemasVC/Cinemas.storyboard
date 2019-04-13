@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Кинотеатры-->
+        <scene sceneID="j3m-J7-UHy">
+            <objects>
+                <viewController storyboardIdentifier="cinemasVC" id="o42-t2-O23" customClass="CinemasVC" customModule="cinema" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UB7-J0-ZKp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BAF-dM-ltY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cinemaCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cinemaCell" rowHeight="136" id="duy-Nd-NWO" customClass="CinemaCell" customModule="cinema" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="136"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="duy-Nd-NWO" id="W55-Ko-WF9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yca-2B-hOt" customClass="BorderedView" customModule="cinema" customModuleProvider="target">
+                                                    <rect key="frame" x="6" y="12" width="363" height="124"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiplex" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Gg-oo-e1a">
+                                                            <rect key="frame" x="8" y="8" width="347" height="26.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                                            <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="проспект Генерала Ватутина 2Т" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHr-rl-3i4">
+                                                            <rect key="frame" x="8" y="35.5" width="347" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.74901960779999999" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="2D, 3D, TWINS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWH-p0-2g2">
+                                                            <rect key="frame" x="8" y="60.5" width="347" height="55.5"/>
+                                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                                            <color key="textColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.18039215689999999" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="PWH-p0-2g2" secondAttribute="bottom" constant="8" id="6Zo-dD-4gM"/>
+                                                        <constraint firstItem="1Gg-oo-e1a" firstAttribute="top" secondItem="Yca-2B-hOt" secondAttribute="top" constant="8" id="HKE-Gg-5ah"/>
+                                                        <constraint firstItem="qHr-rl-3i4" firstAttribute="leading" secondItem="Yca-2B-hOt" secondAttribute="leading" constant="8" id="QEx-cw-ltj"/>
+                                                        <constraint firstItem="PWH-p0-2g2" firstAttribute="top" secondItem="qHr-rl-3i4" secondAttribute="bottom" constant="8" id="S5N-K2-MNh"/>
+                                                        <constraint firstItem="qHr-rl-3i4" firstAttribute="top" secondItem="1Gg-oo-e1a" secondAttribute="bottom" constant="1" id="TIV-TF-r4S"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PWH-p0-2g2" secondAttribute="trailing" constant="8" id="UQz-uz-hmX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1Gg-oo-e1a" secondAttribute="trailing" constant="8" id="drN-hQ-HeQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="qHr-rl-3i4" secondAttribute="trailing" constant="8" id="hro-Ow-d93"/>
+                                                        <constraint firstItem="1Gg-oo-e1a" firstAttribute="leading" secondItem="Yca-2B-hOt" secondAttribute="leading" constant="8" id="kku-If-KYU"/>
+                                                        <constraint firstItem="PWH-p0-2g2" firstAttribute="leading" secondItem="Yca-2B-hOt" secondAttribute="leading" constant="8" id="pAW-bz-eRM"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Yca-2B-hOt" secondAttribute="bottom" id="LzR-pC-csv"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yca-2B-hOt" secondAttribute="trailing" constant="6" id="aVw-ag-KzD"/>
+                                                <constraint firstItem="Yca-2B-hOt" firstAttribute="top" secondItem="W55-Ko-WF9" secondAttribute="top" constant="12" id="ehz-tm-gfI"/>
+                                                <constraint firstItem="Yca-2B-hOt" firstAttribute="leading" secondItem="W55-Ko-WF9" secondAttribute="leading" constant="6" id="xKr-CK-NDG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cinemaAddress" destination="qHr-rl-3i4" id="kI7-dz-4am"/>
+                                            <outlet property="cinemaFormats" destination="PWH-p0-2g2" id="cJx-le-xvK"/>
+                                            <outlet property="cinemaName" destination="1Gg-oo-e1a" id="Ysi-Y9-OwW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="o42-t2-O23" id="Pr5-Gp-Pt5"/>
+                                    <outlet property="delegate" destination="o42-t2-O23" id="7i9-fR-Rb5"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10980392160000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="BAF-dM-ltY" firstAttribute="leading" secondItem="sYk-U0-4sH" secondAttribute="leading" id="GZX-rN-Hnc"/>
+                            <constraint firstItem="BAF-dM-ltY" firstAttribute="top" secondItem="sYk-U0-4sH" secondAttribute="top" id="Qky-vu-gbJ"/>
+                            <constraint firstItem="sYk-U0-4sH" firstAttribute="bottom" secondItem="BAF-dM-ltY" secondAttribute="bottom" id="irF-vj-4LQ"/>
+                            <constraint firstItem="sYk-U0-4sH" firstAttribute="trailing" secondItem="BAF-dM-ltY" secondAttribute="trailing" id="o7L-LZ-rzP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sYk-U0-4sH"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Кинотеатры" id="7ba-FH-tcd"/>
+                    <connections>
+                        <outlet property="cinemasTableView" destination="BAF-dM-ltY" id="XcT-mQ-z9H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FRT-ji-Bag" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="621.60000000000002" y="17.541229385307346"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TNT-4U-9li">
+            <objects>
+                <navigationController storyboardIdentifier="cinemasNavVC" automaticallyAdjustsScrollViewInsets="NO" id="1lt-v3-qid" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="haw-BK-Jru">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.18039215689999999" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o42-t2-O23" kind="relationship" relationship="rootViewController" id="Z3i-cy-Uhw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u22-RV-VVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-69.599999999999994" y="18.440779610194905"/>
+        </scene>
+    </scenes>
+</document>

@@ -36,7 +36,7 @@ class RootVC: UIViewController {
         self.view.insertSubview(sidebarMenuVC!.view, belowSubview: revealVC!.view)
         
         if UserData.instance.isLoggedIn {
-            Requests.instance.getUserData(token: UserData.instance.token!) { success in
+            _ = Requests.instance.getUserData { success in
                 if success {
                     NotificationCenter.default.post(name: NSNotification.Name(USER_HAS_ENTERED), object: nil)
                 } else {

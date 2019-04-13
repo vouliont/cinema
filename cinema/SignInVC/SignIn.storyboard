@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,54 +15,54 @@
             <objects>
                 <viewController storyboardIdentifier="signInVC" id="Szo-N1-MFl" customClass="SignInVC" customModule="cinema" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gim-CB-Je9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeT-Sd-hVQ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTj-Wt-GXe" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="258"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="258"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNa-VM-6Nk" userLabel="Center View">
-                                                <rect key="frame" x="0.0" y="30" width="414" height="198"/>
+                                                <rect key="frame" x="0.0" y="30" width="375" height="198"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ehB-AH-W2B">
-                                                        <rect key="frame" x="82" y="0.0" width="250" height="30"/>
+                                                        <rect key="frame" x="62.5" y="0.0" width="250" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="AnN-Jk-N5R"/>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="YBM-L7-FYP"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bol-kt-5wb">
-                                                        <rect key="frame" x="82" y="30" width="250" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="62.5" y="30" width="250" height="1"/>
+                                                        <color key="backgroundColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Omw-EY-idY"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Sk-vE-Dzt">
-                                                        <rect key="frame" x="82" y="51" width="250" height="30"/>
+                                                        <rect key="frame" x="62.5" y="51" width="250" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="3RV-qC-pnv"/>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="o2c-CP-EAA"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Xc-Ea-Wfd">
-                                                        <rect key="frame" x="82" y="81" width="250" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="62.5" y="81" width="250" height="1"/>
+                                                        <color key="backgroundColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="axk-fd-CrX"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZi-6l-vfX" customClass="BorderedButton" customModule="cinema" customModuleProvider="target">
-                                                        <rect key="frame" x="127" y="122" width="160" height="40"/>
+                                                        <rect key="frame" x="107.5" y="122" width="160" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="160" id="fza-Dm-8fC"/>
@@ -70,7 +70,7 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                         <state key="normal" title="Войти">
-                                                            <color key="titleColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="titleColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -80,7 +80,7 @@
                                                                 <real key="value" value="2"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="value" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -88,13 +88,13 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="G7W-HD-Kxd">
-                                                        <rect key="frame" x="84.666666666666686" y="170" width="245" height="28"/>
+                                                        <rect key="frame" x="65" y="170" width="245" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="roL-xx-Da2"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
                                                         <state key="normal" title="Еще не имеете акаунта? Создайте тут.">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="showSignUpVCButtonPressed:" destination="Szo-N1-MFl" eventType="touchUpInside" id="ulp-0j-Scq"/>
@@ -141,7 +141,8 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1764705882" green="0.16862745100000001" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.10980392160000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="JeT-Sd-hVQ" firstAttribute="trailing" secondItem="8en-bb-iBi" secondAttribute="trailing" id="QSq-Wv-alE"/>
                             <constraint firstItem="JeT-Sd-hVQ" firstAttribute="leading" secondItem="8en-bb-iBi" secondAttribute="leading" id="Rp6-67-Eue"/>
@@ -169,105 +170,105 @@
             <objects>
                 <viewController storyboardIdentifier="signUpVC" id="0h4-ch-hpg" customClass="SignUpVC" customModule="cinema" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N0p-qU-nRb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pN-Pw-0lD">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tck-UQ-ZMt" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="373"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qci-vo-N7P" userLabel="Center View">
-                                                <rect key="frame" x="0.0" y="30" width="414" height="313"/>
+                                                <rect key="frame" x="0.0" y="30" width="375" height="313"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5zE-b9-ZHv">
-                                                        <rect key="frame" x="82" y="0.0" width="250" height="30"/>
+                                                        <rect key="frame" x="62.5" y="0.0" width="250" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="2vp-a3-IX1"/>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="qiO-au-Sfs"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZL-6j-Wb9">
-                                                        <rect key="frame" x="82" y="30" width="250" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="62.5" y="30" width="250" height="1"/>
+                                                        <color key="backgroundColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="fZd-uG-ONu"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dbC-cd-RyN">
-                                                        <rect key="frame" x="82" y="51" width="250" height="30"/>
+                                                        <rect key="frame" x="62.5" y="51" width="250" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="NcM-gy-86K"/>
                                                             <constraint firstAttribute="height" constant="30" id="irl-NG-kyB"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2F-ES-haS">
-                                                        <rect key="frame" x="82" y="81" width="250" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="62.5" y="81" width="250" height="1"/>
+                                                        <color key="backgroundColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="DdY-M2-9Km"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vaZ-Z0-ELA">
-                                                        <rect key="frame" x="82" y="102" width="250" height="30"/>
+                                                        <rect key="frame" x="62.5" y="102" width="250" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="PO3-1H-tRP"/>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="sZT-aL-ogZ"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kr6-ps-T7l">
-                                                        <rect key="frame" x="82" y="132" width="250" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="62.5" y="132" width="250" height="1"/>
+                                                        <color key="backgroundColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Q3Z-SE-iki"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Повторите пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yf4-OT-Vp3">
-                                                        <rect key="frame" x="82" y="153" width="250" height="30"/>
+                                                        <rect key="frame" x="62.5" y="153" width="250" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="26a-Rz-ycn"/>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="xB0-RW-gfo"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hA6-05-RsA">
-                                                        <rect key="frame" x="82" y="183" width="250" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="62.5" y="183" width="250" height="1"/>
+                                                        <color key="backgroundColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="otg-5h-tag"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Город" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nzD-h0-cr8">
-                                                        <rect key="frame" x="82" y="203" width="250" height="30"/>
+                                                        <rect key="frame" x="62.5" y="203" width="250" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="R88-Sr-0EK"/>
                                                             <constraint firstAttribute="height" constant="30" id="l62-hX-5ex"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LV1-V1-4dx">
-                                                        <rect key="frame" x="82" y="232" width="250" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="62.5" y="232" width="250" height="1"/>
+                                                        <color key="backgroundColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="hUC-pG-HrX"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FI-u1-wcM" customClass="BorderedButton" customModule="cinema" customModuleProvider="target">
-                                                        <rect key="frame" x="107" y="273" width="200" height="40"/>
+                                                        <rect key="frame" x="87.5" y="273" width="200" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="1Le-NP-GiU"/>
@@ -275,14 +276,14 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                         <state key="normal" title="Регистрация">
-                                                            <color key="titleColor" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="titleColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.95686274510000002" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="value" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                 <real key="value" value="2"/>
@@ -349,7 +350,8 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1764705882" green="0.16862745100000001" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.10980392160000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="2pN-Pw-0lD" firstAttribute="top" secondItem="2Uk-he-IpS" secondAttribute="top" id="GBL-iV-KpQ"/>
                             <constraint firstItem="2pN-Pw-0lD" firstAttribute="trailing" secondItem="2Uk-he-IpS" secondAttribute="trailing" id="THm-pD-qE8"/>
@@ -380,11 +382,11 @@
                 <navigationController storyboardIdentifier="signInNavVC" automaticallyAdjustsScrollViewInsets="NO" id="DwG-uU-ADL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="1uH-q3-gDY">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.20784313725490194" green="0.20000000000000001" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.18039215689999999" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -45,7 +45,7 @@ class SignInVC: KeyboardVC {
                 return
             }
             
-            self.getUserDataRequest = Requests.instance.getUserData(token: UserData.instance.token!, completion: { success in
+            self.getUserDataRequest = Requests.instance.getUserData { success in
                 self.getUserDataRequest = nil
                 if success {
                     NotificationCenter.default.post(name: NSNotification.Name(USER_HAS_ENTERED), object: nil)
@@ -55,7 +55,7 @@ class SignInVC: KeyboardVC {
                     // ...
                     Helpers.instance.showAlert(controller: self, title: "Что-то пошло не так.", message: "Повторите попытку еще раз, пожалуйста.")
                 }
-            })
+            }
         }
     }
     

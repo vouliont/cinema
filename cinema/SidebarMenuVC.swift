@@ -37,7 +37,7 @@ class SidebarMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return
         }
         popupItems = [
-//            PopupItem(name: "Кинотеатры", id: "cinemasNavVC"),
+            PopupItem(name: "Кинотеатры", id: "cinemasNavVC"),
             PopupItem(name: "Фильмы", id: "filmsNavVC"),
 //            PopupItem(name: "Акции", id: "promotionsNavVC"),
 //            PopupItem(name: "Настройки", id: "settingsNavVC")
@@ -93,6 +93,6 @@ class SidebarMenuCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        self.layer.backgroundColor = selected ? UIColor(white: 0, alpha: 0.2).cgColor : UIColor.clear.cgColor
+        self.layer.backgroundColor = selected ? #colorLiteral(red: 0.107949473, green: 0.1179771051, blue: 0.1177764311, alpha: 1) : UIColor.clear.cgColor
     }
 }

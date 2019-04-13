@@ -10,9 +10,10 @@ import UIKit
 
 class KeyboardVC: UIViewController {
     
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var contentView: UIView!
-    @IBOutlet var contentViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView?
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewTopConstraint: NSLayoutConstraint?
+    @IBOutlet weak var contentViewBottomConstraint: NSLayoutConstraint?
     
     private var isLoadingFirstTime = true
     private var keyboardHeight: CGFloat = 0 {
@@ -43,24 +44,41 @@ class KeyboardVC: UIViewController {
         reposition()
     }
     
-    func reposition() {
+    private func reposition() {
+        if scrollView != nil {
+            repositionScrollView()
+        } else {
+            repositionContentView()
+        }
+    }
+    
+    private func repositionScrollView() {
         let viewportHeight = view.safeAreaLayoutGuide.layoutFrame.height - keyboardHeight
         let contentHeight = contentView.frame.height
         let inset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
         let center: CGFloat = contentHeight > viewportHeight ? 0 : (viewportHeight - contentHeight) / 2
         
-        scrollView.contentInset = inset
-        scrollView.scrollIndicatorInsets = inset
-
-        contentViewTopConstraint.constant = center
+        scrollView!.contentInset = inset
+        scrollView!.scrollIndicatorInsets = inset
+        
+        contentViewTopConstraint!.constant = center
         if UIView.areAnimationsEnabled && !isLoadingFirstTime {
             UIView.animate(withDuration: 0.2) {
-                self.scrollView.layoutIfNeeded()
+                self.scrollView!.layoutIfNeeded()
             }
             return
         }
         
         isLoadingFirstTime = false
+    }
+    
+    private func repositionContentView() {
+        contentViewBottomConstraint!.constant = keyboardHeight
+        if UIView.areAnimationsEnabled {
+            UIView.animate(withDuration: 0.2) {
+                self.contentView.superview!.layoutIfNeeded()
+            }
+        }
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {

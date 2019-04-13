@@ -17,7 +17,8 @@ class Requests {
         case signIn = "http://localhost/v1/signin"
         case signUp = "http://localhost/v1/signup"
         case getUserData = "http://localhost/v1/getuserdata"
-        case getCities = "http://localhost/v1/getcities"
+        case getCities = "http://localhost/v1/cities"
+        case getCinemas = "http://localhost/v1/cinemas"
     }
     private let headers: [String: String] = [
         "Content-Type": "application/json"
@@ -88,9 +89,9 @@ class Requests {
         return request
     }
     
-    func getUserData(token: String, completion: @escaping (_ success: Bool) -> Void) -> Alamofire.DataRequest {
+    func getUserData(completion: @escaping (_ success: Bool) -> Void) -> Alamofire.DataRequest {
         var headers: [String: String] = [
-            "X-Session-Token": token
+            "X-Session-Token": UserData.instance.token!
         ]
         headers.merge(self.headers) { (current, _) -> String in
             current
@@ -125,13 +126,12 @@ class Requests {
         return request
     }
     
-    func getCities(completion: @escaping (_ success: Bool) -> Void) -> Alamofire.DataRequest {
-        let request = Alamofire.request(Urls.getCities.rawValue, method: .get, parameters: nil, encoding: JSONEncoding.default
-            , headers: headers)
+    func getCities(completion: ((_ success: Bool) -> Void)?) -> Alamofire.DataRequest {
+        let request = Alamofire.request(Urls.getCities.rawValue, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
         request.responseJSON { response in
             if let error = response.error {
                 debugPrint(error)
-                completion(false)
+                completion?(false)
                 return
             }
             
@@ -139,7 +139,7 @@ class Requests {
             let json = JSON(result)
             
             if !json["success"].boolValue {
-                completion(false)
+                completion?(false)
                 return
             }
             
@@ -149,9 +149,55 @@ class Requests {
             for city in cities {
                 OtherData.instance.addCity(city.stringValue)
             }
-            completion(true)
+            completion?(true)
         }
         
         return request
+    }
+    
+    func getCinemas(city: String = UserData.instance.city!, formats: [String] = [], completion: ((_ success: Bool) -> Void)?) -> Alamofire.DataRequest {
+        var headers: [String: String] = [
+            "X-Session-Token": UserData.instance.token!
+        ]
+        headers.merge(self.headers) { (current, _) -> String in
+            current
+        }
+        let params: Parameters = [
+            "city": city,
+            "formats": formats
+        ]
+        
+        let request = Alamofire.request(Urls.getCinemas.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers);
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false)
+                return
+            }
+            
+            let cinemas = json["cinemas"].dictionaryValue
+            OtherData.instance.clearCinemas()
+            for (idString, cinema) in cinemas {
+                let id = Int(idString)!
+                let name = cinema["name"].stringValue
+                let address = cinema["address"].stringValue
+                let formats = cinema["formats"].arrayValue.map { $0.stringValue }
+                
+                let cinemaObject = Cinema(id: id, name: name, address: address, formats: formats)
+                OtherData.instance.addCinema(cinemaObject)
+            }
+            
+            completion?(true)
+        }
+        
+        return request;
     }
 }

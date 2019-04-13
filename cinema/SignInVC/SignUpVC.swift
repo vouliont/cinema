@@ -46,13 +46,23 @@ class SignUpVC: KeyboardVC {
         repeatPasswordField.attributedPlaceholder = NSAttributedString(string: "Повторите пароль", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6156862745, green: 0.6117647059, blue: 0.6117647059, alpha: 1)])
         cityField.attributedPlaceholder = NSAttributedString(string: "Город", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6156862745, green: 0.6117647059, blue: 0.6117647059, alpha: 1)])
         cityField.inputView = cityPicker
+        
+        let backButtonImg = UIImage(named: "backButton")
+        let backButton = UIBarButtonItem(image: backButtonImg, style: .plain, target: self, action: #selector(popSignUp))
+        backButton.tintColor = #colorLiteral(red: 0.8735373616, green: 0.8786564469, blue: 0.8784019351, alpha: 1)
+        self.navigationItem.leftBarButtonItem = backButton
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         signUpRequest?.cancel()
         signInRequest?.cancel()
         getUserDataRequest?.cancel()
         getCitiesRequest?.cancel()
+    }
+    
+    @objc func popSignUp() {
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
@@ -88,7 +98,7 @@ class SignUpVC: KeyboardVC {
                     return
                 }
                 
-                self.getUserDataRequest = Requests.instance.getUserData(token: UserData.instance.token!, completion: { success in
+                self.getUserDataRequest = Requests.instance.getUserData { success in
                     self.getUserDataRequest = nil
                     if success {
                         NotificationCenter.default.post(name: NSNotification.Name(USER_HAS_ENTERED), object: nil)
@@ -98,7 +108,7 @@ class SignUpVC: KeyboardVC {
                         // ...
                         Helpers.instance.showAlert(controller: self, title: "Что-то пошло не так.", message: "Повторите попытку еще раз, пожалуйста.")
                     }
-                })
+                }
             }
         }
     }

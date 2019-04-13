@@ -28,6 +28,7 @@ class RevealVC: UIViewController {
     }
     
     func toggleSidebar(_ state: Bool? = nil) {
+        self.view.endEditing(true)
         let newState = state != nil ? state! : !isSidebarOpen
         if newState == isSidebarOpen { return }
         isSidebarOpen = newState
