@@ -10,10 +10,10 @@ import Foundation
 
 class SelectFilter {
     var isOn: Bool = false
-    var name: String = ""
+    var data: Any
     
-    init(isOn: Bool = false, name: String) {
+    init(isOn: Bool = false, data: Any) {
         self.isOn = isOn
-        self.name = name
+        self.data = data
     }
 }

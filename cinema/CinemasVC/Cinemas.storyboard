@@ -44,8 +44,8 @@
                                                             <color key="textColor" red="0.74901960779999999" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="2D, 3D, TWINS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWH-p0-2g2">
-                                                            <rect key="frame" x="8" y="60.5" width="347" height="55.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2D, 3D, TWINS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWH-p0-2g2">
+                                                            <rect key="frame" x="8" y="99" width="347" height="17"/>
                                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                                             <color key="textColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="PWH-p0-2g2" secondAttribute="bottom" constant="8" id="6Zo-dD-4gM"/>
                                                         <constraint firstItem="1Gg-oo-e1a" firstAttribute="top" secondItem="Yca-2B-hOt" secondAttribute="top" constant="8" id="HKE-Gg-5ah"/>
                                                         <constraint firstItem="qHr-rl-3i4" firstAttribute="leading" secondItem="Yca-2B-hOt" secondAttribute="leading" constant="8" id="QEx-cw-ltj"/>
-                                                        <constraint firstItem="PWH-p0-2g2" firstAttribute="top" secondItem="qHr-rl-3i4" secondAttribute="bottom" constant="8" id="S5N-K2-MNh"/>
+                                                        <constraint firstItem="PWH-p0-2g2" firstAttribute="top" secondItem="qHr-rl-3i4" secondAttribute="bottom" priority="250" constant="8" id="S5N-K2-MNh"/>
                                                         <constraint firstItem="qHr-rl-3i4" firstAttribute="top" secondItem="1Gg-oo-e1a" secondAttribute="bottom" constant="1" id="TIV-TF-r4S"/>
                                                         <constraint firstAttribute="trailing" secondItem="PWH-p0-2g2" secondAttribute="trailing" constant="8" id="UQz-uz-hmX"/>
                                                         <constraint firstAttribute="trailing" secondItem="1Gg-oo-e1a" secondAttribute="trailing" constant="8" id="drN-hQ-HeQ"/>
@@ -111,11 +111,64 @@
                     <navigationItem key="navigationItem" title="Кинотеатры" id="7ba-FH-tcd"/>
                     <connections>
                         <outlet property="cinemasTableView" destination="BAF-dM-ltY" id="XcT-mQ-z9H"/>
+                        <segue destination="9fy-fz-oap" kind="show" identifier="showFilmsSegue" id="Hxt-g8-pax"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRT-ji-Bag" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="621.60000000000002" y="17.541229385307346"/>
+        </scene>
+        <!--Еда и напитки-->
+        <scene sceneID="R48-ac-glc">
+            <objects>
+                <viewController id="x2y-gN-4a3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eIA-ES-Ghu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="MdF-Bj-dUp"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Еда и напитки" image="food" id="FPI-N0-Pyh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qDm-0e-kPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2380" y="349"/>
+        </scene>
+        <!--Фильмы-->
+        <scene sceneID="h33-uS-gbf">
+            <objects>
+                <viewController id="54f-T1-1hx" customClass="CinemaFilmsVC" customModule="cinema" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BH0-Gm-iv2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="U2Z-se-A9r"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Фильмы" image="films" id="2gR-P6-d2D"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sqe-5d-Les" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2378" y="-315"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="6gM-o1-XSx">
+            <objects>
+                <tabBarController id="9fy-fz-oap" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="wur-vY-gzu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.18039215689999999" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="selectedImageTintColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="54f-T1-1hx" kind="relationship" relationship="viewControllers" id="rxI-Bk-vxC"/>
+                        <segue destination="x2y-gN-4a3" kind="relationship" relationship="viewControllers" id="B9G-Me-X8g"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LCb-Mu-geR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1367" y="18"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TNT-4U-9li">
@@ -138,7 +191,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u22-RV-VVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-69.599999999999994" y="18.440779610194905"/>
+            <point key="canvasLocation" x="-164" y="18"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="films" width="25" height="25"/>
+        <image name="food" width="25" height="25"/>
+    </resources>
 </document>

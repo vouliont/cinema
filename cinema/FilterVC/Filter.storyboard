@@ -51,7 +51,6 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                             <connections>
-                                                                <action selector="textFieldEditingChanged:" destination="Kma-bm-SPJ" eventType="editingDidEnd" id="MHl-Qm-YHr"/>
                                                                 <action selector="textFieldEditingDidBegin:" destination="Kma-bm-SPJ" eventType="editingDidBegin" id="KfO-ki-lCE"/>
                                                             </connections>
                                                         </textField>

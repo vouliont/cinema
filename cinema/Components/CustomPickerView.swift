@@ -9,16 +9,28 @@
 import UIKit
 
 class CustomPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+    enum PickerViewFor {
+        case Cities
+    }
     
-    var data: [String] = []
-    var textFieldBeingEdited: UITextField?
+    var pickerDidChange: ((_ selected: Any, _ index: Int?) -> Void)?
+
+    var data: [Any] = []
+    var selected: Any?
+    var textFieldBeingEdited: UITextField!
+    var typeObjects: PickerViewFor!
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textFieldBeingEdited?.text = data[row]
+        if typeObjects == .Cities {
+            let city = data[row] as! City
+            textFieldBeingEdited.text = city.name
+        }
+        selected = data[row]
+        pickerDidChange?(selected!, row)
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return data.isEmpty ? 0 : 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -26,7 +38,12 @@ class CustomPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data[row]
+        if typeObjects == .Cities {
+            let city = data[row] as! City
+            return city.name
+        }
+        
+        return ""
     }
 
 }

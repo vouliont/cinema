@@ -13,11 +13,19 @@ class RevealVC: UIViewController {
     private var popups: [String: UINavigationController] = [:]
     private var currentPopupId: String?
     private var isSidebarOpen: Bool = false
+    
+    private var topShadowView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickedRevealVC)))
+        topShadowView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+        topShadowView.backgroundColor = #colorLiteral(red: 0.107949473, green: 0.1179771051, blue: 0.1177764311, alpha: 0.2029644692)
+        topShadowView.layer.zPosition = 20
+        self.view.addSubview(topShadowView)
+        topShadowView.isHidden = true
+        topShadowView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickedRevealVC)))
+        
         self.view.layer.shadowOpacity = 2
         
         NotificationCenter.default.addObserver(self, selector: #selector(togglePopup(_:)), name: NSNotification.Name(SELECT_MENU_ITEM), object: nil)
@@ -33,6 +41,8 @@ class RevealVC: UIViewController {
         if newState == isSidebarOpen { return }
         isSidebarOpen = newState
         let targetPosition: CGFloat = newState ? self.view.frame.width - 60 : 0
+        
+        topShadowView.isHidden = !isSidebarOpen
         
         UIView.animate(withDuration: 0.5,
                        delay: 0,
@@ -51,9 +61,10 @@ class RevealVC: UIViewController {
             toggleSidebar(false)
             return
         }
-        
-        popups[id]?.view.removeFromSuperview()
-        popups[id]?.removeFromParent()
+        if let currentPopupId = currentPopupId {
+            popups[currentPopupId]?.view.removeFromSuperview()
+            popups[currentPopupId]?.removeFromParent()
+        }
         
         let popup: UINavigationController!
         
@@ -65,7 +76,7 @@ class RevealVC: UIViewController {
             popup = popups[id]
         }
         self.addChild(popup)
-        self.view.addSubview(popup.view)
+        self.view.insertSubview(popup.view, at: 0)
         let topViewController = popup.topViewController as! PopupVC
         topViewController.rootController = self
         currentPopupId = id

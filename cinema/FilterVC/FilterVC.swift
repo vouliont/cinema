@@ -15,7 +15,7 @@ class FilterVC: KeyboardVC, UITableViewDelegate, UITableViewDataSource {
     
     var isOpen: Bool = false
     var headers: [String] = []
-    var data: [CustomCells] = []
+    var data: [FilterCell] = []
     let screenSize = UIScreen.main.bounds
     
     private var keyboardPicker: CustomPickerView?
@@ -59,21 +59,21 @@ class FilterVC: KeyboardVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[section].data.count
+        return data[section].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = data[indexPath.section].id
+        let identifier = data[indexPath.section].identifier
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         
         if let selectCell = cell as? SelectCell {
-            let selectFilter = data[indexPath.section].data[indexPath.row] as! SelectFilter
-            selectCell.setUpCell(selectFilter: selectFilter)
+            let selectFilter = data[indexPath.section].items[indexPath.row] as! SelectFilter
+            selectCell.setUpCell(selectFilter: selectFilter, typeObjects: .Format)
         }
         
         if let pickerCell = cell as? PickerCell {
-            let pickerFilter = data[indexPath.section].data[indexPath.row] as! PickerFilter
-            pickerCell.setUpCell(pickerFilter: pickerFilter, keyboardPicker: keyboardPicker!)
+            let pickerFilter = data[indexPath.section].items[indexPath.row] as! PickerFilter
+            pickerCell.setUpCell(pickerFilter: pickerFilter, keyboardPicker: keyboardPicker!, typeObjects: .Cities)
         }
         
         return cell
@@ -82,16 +82,27 @@ class FilterVC: KeyboardVC, UITableViewDelegate, UITableViewDataSource {
 }
 
 class PickerCell: UITableViewCell {
+    enum PickerCellFor {
+        case Cities
+    }
+    var typeObjects: PickerCellFor?
     
     var filter: PickerFilter!
     var keyboardPicker: CustomPickerView!
+    var selectedItemIndex: Int = 0
     
     @IBOutlet var textField: UITextField!
     
-    func setUpCell(pickerFilter: PickerFilter, keyboardPicker: CustomPickerView) {
+    func setUpCell(pickerFilter: PickerFilter, keyboardPicker: CustomPickerView, typeObjects: PickerCellFor) {
         filter = pickerFilter
+        self.typeObjects = typeObjects
         self.keyboardPicker = keyboardPicker
-        textField.text = filter.items[filter.selected]
+        if typeObjects == .Cities {
+            textField.text = (filter.selected as! City).name
+            self.selectedItemIndex = (filter.items as! [City]).firstIndex(where: { city -> Bool in
+                return city.id == (filter.selected as! City).id
+            }) ?? 0
+        }
         textField.inputView = keyboardPicker
         textField.attributedPlaceholder = NSAttributedString(string: pickerFilter.placeholder, attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6156862745, green: 0.6117647059, blue: 0.6117647059, alpha: 1)])
     }
@@ -99,30 +110,43 @@ class PickerCell: UITableViewCell {
     @IBAction func textFieldEditingDidBegin(_ sender: UITextField) {
         keyboardPicker.textFieldBeingEdited = textField
         keyboardPicker.data = filter.items
+        if typeObjects == .Cities {
+            keyboardPicker.typeObjects = .Cities
+        }
         keyboardPicker.reloadAllComponents()
-        keyboardPicker.selectRow(filter.selected, inComponent: 0, animated: false)
-    }
-    
-    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        filter.selected = filter.items.index(of: sender.text!) ?? filter.selected
+        keyboardPicker.pickerDidChange = { item, index in
+            self.filter.selected = item as! City
+            self.selectedItemIndex = index!
+        }
+        
+        keyboardPicker.selectRow(selectedItemIndex, inComponent: 0, animated: false)
     }
     
 }
 
 class SelectCell: UITableViewCell {
+    enum SelectCellFor {
+        case Format
+    }
     
     var filter: SelectFilter!
     
     @IBOutlet var filterName: UILabel!
     @IBOutlet var filterSwitch: UISwitch!
     
+    var typeObjects: SelectCellFor?
+    
     @IBAction func filterSwitchDidChange(_ sender: UISwitch) {
         filter.isOn = sender.isOn
     }
     
-    func setUpCell(selectFilter: SelectFilter) {
+    func setUpCell(selectFilter: SelectFilter, typeObjects: SelectCellFor) {
         filter = selectFilter
-        filterName.text = filter.name
+        self.typeObjects = typeObjects
+        if typeObjects == .Format {
+            let format = filter.data as! Format
+            filterName.text = format.name
+        }
         filterSwitch.isOn = filter.isOn
     }
     

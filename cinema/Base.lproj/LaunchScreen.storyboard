@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,30 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q18-wq-zap">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="A1h-pG-tKP">
-                                        <rect key="frame" x="97.5" y="308.5" width="180" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="b9h-k1-fkV"/>
-                                            <constraint firstAttribute="height" constant="50" id="fie-AL-gNi"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.1764705882" green="0.16862745100000001" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="A1h-pG-tKP">
+                                <rect key="frame" x="97.5" y="308.5" width="180" height="50"/>
                                 <constraints>
-                                    <constraint firstItem="A1h-pG-tKP" firstAttribute="centerX" secondItem="q18-wq-zap" secondAttribute="centerX" id="gg9-jN-gRZ"/>
-                                    <constraint firstItem="A1h-pG-tKP" firstAttribute="centerY" secondItem="q18-wq-zap" secondAttribute="centerY" id="iTh-Z9-qg3"/>
+                                    <constraint firstAttribute="width" constant="180" id="b9h-k1-fkV"/>
+                                    <constraint firstAttribute="height" constant="50" id="fie-AL-gNi"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.10980392160000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="q18-wq-zap" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="8IV-4v-D2d"/>
-                            <constraint firstItem="q18-wq-zap" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nYW-gL-kVT"/>
-                            <constraint firstAttribute="trailing" secondItem="q18-wq-zap" secondAttribute="trailing" id="rJY-JV-c7B"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="q18-wq-zap" secondAttribute="bottom" id="uvg-DS-RNF"/>
+                            <constraint firstItem="A1h-pG-tKP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vTz-FW-m5q"/>
+                            <constraint firstItem="A1h-pG-tKP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xS3-t5-LK9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -52,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="95" height="26.879999160766602"/>
+        <image name="logo" width="396" height="112"/>
     </resources>
 </document>

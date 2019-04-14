@@ -46,7 +46,7 @@ class UserData {
     }
     
     public private(set) var name: String?
-    public private(set) var city: String?
+    public private(set) var city: City?
     public private(set) var accessLevel: Int?
     
     func setData(email: String, token: String) {
@@ -54,7 +54,7 @@ class UserData {
         self.token = token
     }
     
-    func setData(name: String, city: String, accessLevel: Int) {
+    func setData(name: String, city: City, accessLevel: Int) {
         self.name = name
         self.city = city
         self.accessLevel = accessLevel

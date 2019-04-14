@@ -18,18 +18,19 @@ class Requests {
         case signUp = "http://localhost/v1/signup"
         case getUserData = "http://localhost/v1/getuserdata"
         case getCities = "http://localhost/v1/cities"
+        case getFormats = "http://localhost/v1/formats"
         case getCinemas = "http://localhost/v1/cinemas"
     }
     private let headers: [String: String] = [
         "Content-Type": "application/json"
     ]
     
-    func signUp(name: String, email: String, password: String, city: String, completion: @escaping (_ success: Bool, _ message: String) -> Void) -> Alamofire.DataRequest {
-        let params: [String: String] = [
+    func signUp(name: String, email: String, password: String, city: City, completion: @escaping (_ success: Bool, _ message: String) -> Void) -> Alamofire.DataRequest {
+        let params: [String: Any] = [
             "name": name,
             "email": email,
             "password": password,
-            "city": city
+            "cityId": city.id
         ]
         
         let request = Alamofire.request(Urls.signUp.rawValue, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
@@ -114,7 +115,7 @@ class Requests {
             let success = json["success"].boolValue
             if success {
                 let name = json["name"].stringValue
-                let city = json["city"].stringValue
+                let city = City(id: json["cityId"].intValue, name: json["cityName"].stringValue)
                 let accessLevel = json["accessLevel"].intValue
                 
                 UserData.instance.setData(name: name, city: city, accessLevel: accessLevel)
@@ -126,12 +127,12 @@ class Requests {
         return request
     }
     
-    func getCities(completion: ((_ success: Bool) -> Void)?) -> Alamofire.DataRequest {
+    func getCities(completion: ((_ success: Bool, _ cities: [City]?) -> Void)?) -> Alamofire.DataRequest {
         let request = Alamofire.request(Urls.getCities.rawValue, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
         request.responseJSON { response in
             if let error = response.error {
                 debugPrint(error)
-                completion?(false)
+                completion?(false, nil)
                 return
             }
             
@@ -139,32 +140,71 @@ class Requests {
             let json = JSON(result)
             
             if !json["success"].boolValue {
-                completion?(false)
+                completion?(false, nil)
                 return
             }
             
-            let cities = json["cities"].arrayValue
+            let jsonCities = json["cities"].arrayValue
             
-            OtherData.instance.clearCities()
-            for city in cities {
-                OtherData.instance.addCity(city.stringValue)
-            }
-            completion?(true)
+            let cities = jsonCities.map({ jsonCity -> City in
+                let city = jsonCity.dictionaryValue
+                let id = city["id"]!.intValue
+                let name = city["name"]!.stringValue
+                return City(id: id, name: name)
+            });
+            
+            completion?(true, cities)
         }
         
         return request
     }
     
-    func getCinemas(city: String = UserData.instance.city!, formats: [String] = [], completion: ((_ success: Bool) -> Void)?) -> Alamofire.DataRequest {
+    func getFormats(completion: ((_ success: Bool, _ formats: [Format]?) -> Void)?) -> Alamofire.DataRequest {
+        let request = Alamofire.request(Urls.getFormats.rawValue, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let jsonFormats = json["formats"].arrayValue
+            
+            let formats = jsonFormats.map({ jsonFormat -> Format in
+                let format = jsonFormat.dictionaryValue
+                let id = format["id"]!.intValue
+                let name = format["name"]!.stringValue
+                return Format(id: id, name: name)
+            });
+            
+            completion?(true, formats)
+        }
+        
+        return request
+    }
+    
+    func getCinemas(city: City = UserData.instance.city!, formats: [Format] = [], completion: ((_ success: Bool) -> Void)?) -> Alamofire.DataRequest {
         var headers: [String: String] = [
             "X-Session-Token": UserData.instance.token!
         ]
         headers.merge(self.headers) { (current, _) -> String in
             current
         }
+        let formatsIds = formats.map { format -> Int in
+            return format.id
+        }
         let params: Parameters = [
-            "city": city,
-            "formats": formats
+            "cityId": city.id,
+            "formats": formatsIds
         ]
         
         let request = Alamofire.request(Urls.getCinemas.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers);
@@ -189,7 +229,7 @@ class Requests {
                 let id = Int(idString)!
                 let name = cinema["name"].stringValue
                 let address = cinema["address"].stringValue
-                let formats = cinema["formats"].arrayValue.map { $0.stringValue }
+                let formats = cinema["formats"].arrayValue.map { Format(id: $0.dictionaryValue["id"]!.intValue, name: $0.dictionaryValue["name"]!.stringValue) }
                 
                 let cinemaObject = Cinema(id: id, name: name, address: address, formats: formats)
                 OtherData.instance.addCinema(cinemaObject)

@@ -8,12 +8,12 @@
 
 import Foundation
 
-class CustomCells {
-    public private(set) var id: String
-    public private(set) var data: [Any]
+class FilterCell {
+    public private(set) var identifier: String
+    public private(set) var items: [Any]
     
-    init(id: String, data: [Any]) {
-        self.id = id
-        self.data = data
+    init(identifier: String, items: [Any]) {
+        self.identifier = identifier
+        self.items = items
     }
 }

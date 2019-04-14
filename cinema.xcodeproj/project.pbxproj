@@ -16,6 +16,7 @@
 		2C0E1D02222C78330074C3BA /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E1D01222C78330074C3BA /* UserData.swift */; };
 		2C1055CF222BFCB6006BA2C9 /* PopupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1055CE222BFCB6006BA2C9 /* PopupItem.swift */; };
 		2C1055D3222C60B9006BA2C9 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1055D2222C60B9006BA2C9 /* SignIn.storyboard */; };
+		2C31C6A72262C6E9007E7B2F /* CinemaFilmsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31C6A62262C6E9007E7B2F /* CinemaFilmsVC.swift */; };
 		2C36FAC12262630F00CF225E /* TableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FAC02262630F00CF225E /* TableHeader.xib */; };
 		2C36FAC32262636700CF225E /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36FAC22262636700CF225E /* TableHeaderView.swift */; };
 		2C36FAC52262655700CF225E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36FAC42262655700CF225E /* Extensions.swift */; };
@@ -26,6 +27,8 @@
 		2C70E4E9222130DA00185448 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4E7222130DA00185448 /* Main.storyboard */; };
 		2C70E4EB222130DB00185448 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4EA222130DB00185448 /* Assets.xcassets */; };
 		2C70E4EE222130DB00185448 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C70E4EC222130DB00185448 /* LaunchScreen.storyboard */; };
+		2C88032F2263849D0011F6AC /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88032E2263849D0011F6AC /* Format.swift */; };
+		2C88033122638E190011F6AC /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88033022638E190011F6AC /* City.swift */; };
 		2CA775E52222E759003AE48C /* SidebarMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA775E42222E759003AE48C /* SidebarMenuVC.swift */; };
 		2CA775E72222EBA5003AE48C /* RevealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA775E62222EBA5003AE48C /* RevealVC.swift */; };
 		2CA775F722233EAB003AE48C /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA775F622233EAB003AE48C /* PopupVC.swift */; };
@@ -55,6 +58,7 @@
 		2C0E1D01222C78330074C3BA /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		2C1055CE222BFCB6006BA2C9 /* PopupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupItem.swift; sourceTree = "<group>"; };
 		2C1055D2222C60B9006BA2C9 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		2C31C6A62262C6E9007E7B2F /* CinemaFilmsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaFilmsVC.swift; sourceTree = "<group>"; };
 		2C36FAC02262630F00CF225E /* TableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableHeader.xib; sourceTree = "<group>"; };
 		2C36FAC22262636700CF225E /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		2C36FAC42262655700CF225E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 		2C70E4EA222130DB00185448 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C70E4ED222130DB00185448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C70E4EF222130DB00185448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C88032E2263849D0011F6AC /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		2C88033022638E190011F6AC /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		2CA775E42222E759003AE48C /* SidebarMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarMenuVC.swift; sourceTree = "<group>"; };
 		2CA775E62222EBA5003AE48C /* RevealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealVC.swift; sourceTree = "<group>"; };
 		2CA775F622233EAB003AE48C /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
@@ -108,6 +114,8 @@
 				2CC85D42226211F500B2436B /* SelectFilter.swift */,
 				2CC85D442262132F00B2436B /* PickerFilter.swift */,
 				2CC85D462262257600B2436B /* CustomCells.swift */,
+				2C88032E2263849D0011F6AC /* Format.swift */,
+				2C88033022638E190011F6AC /* City.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,6 +135,7 @@
 			children = (
 				2C013F12225EB0C6000606FE /* Cinemas.storyboard */,
 				2C013F14225EB4E5000606FE /* CinemasVC.swift */,
+				2C31C6A62262C6E9007E7B2F /* CinemaFilmsVC.swift */,
 			);
 			path = CinemasVC;
 			sourceTree = "<group>";
@@ -392,17 +401,20 @@
 				2C0E1D02222C78330074C3BA /* UserData.swift in Sources */,
 				2CF9E478223E56DF00227A57 /* Requests.swift in Sources */,
 				2C0E1CFE222C77DA0074C3BA /* SignInVC.swift in Sources */,
+				2C88032F2263849D0011F6AC /* Format.swift in Sources */,
 				2CF5FA5D225E1E46005E8C4A /* OtherData.swift in Sources */,
 				2CA775E72222EBA5003AE48C /* RevealVC.swift in Sources */,
 				2CF5FA59225E1549005E8C4A /* CustomPickerView.swift in Sources */,
 				2C1055CF222BFCB6006BA2C9 /* PopupItem.swift in Sources */,
 				2CA775FE22235620003AE48C /* FilmsListVC.swift in Sources */,
 				2CA775F722233EAB003AE48C /* PopupVC.swift in Sources */,
+				2C31C6A72262C6E9007E7B2F /* CinemaFilmsVC.swift in Sources */,
 				2CDCD207223EB9BF0067E111 /* Helpers.swift in Sources */,
 				2CC85D452262132F00B2436B /* PickerFilter.swift in Sources */,
 				2C013F15225EB4E5000606FE /* CinemasVC.swift in Sources */,
 				2CA775E52222E759003AE48C /* SidebarMenuVC.swift in Sources */,
 				2C0E1D00222C77EC0074C3BA /* SignUpVC.swift in Sources */,
+				2C88033122638E190011F6AC /* City.swift in Sources */,
 				2CA7760022245C67003AE48C /* FilmVC.swift in Sources */,
 				2CC85D412261F3E500B2436B /* FilterVC.swift in Sources */,
 				2C70E4E4222130DA00185448 /* AppDelegate.swift in Sources */,

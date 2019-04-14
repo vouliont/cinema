@@ -10,6 +10,8 @@ import UIKit
 
 class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     
+    var cinemaId: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,11 +27,7 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "filmsListCell", for: indexPath) as! FilmsListCell
-        
-        cell.setupCell(name: "", genre: "", ageLimit: "", image: UIImage())
-        
-        return cell
+        return UITableViewCell()
     }
 
 }
@@ -39,12 +37,10 @@ class FilmsListCell: UITableViewCell {
     @IBOutlet var filmImage: UIImageView!
     @IBOutlet var filmName: UILabel!
     @IBOutlet var filmGenre: UILabel!
-    @IBOutlet var filmAgeLimit: UILabel!
     
-    func setupCell(name: String, genre: String, ageLimit: String, image: UIImage) {
+    func setupCell(name: String, genre: String, image: UIImage) {
         self.filmName.text = name
         self.filmGenre.text = genre
-        self.filmAgeLimit.text = ageLimit
         self.filmImage.image = image
     }
     

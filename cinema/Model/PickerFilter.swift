@@ -9,11 +9,11 @@
 import Foundation
 
 class PickerFilter {
-    var items: [String]
-    var selected: Int
+    var items: [Any]
+    var selected: Any?
     var placeholder: String
     
-    init(items: [String], selected: Int = 0, placeholder: String = "") {
+    init(items: [Any], selected: Any?, placeholder: String = "") {
         self.items = items
         self.selected = selected
         self.placeholder = placeholder

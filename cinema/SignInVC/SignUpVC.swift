@@ -18,25 +18,34 @@ class SignUpVC: KeyboardVC {
     @IBOutlet var repeatPasswordField: UITextField!
     @IBOutlet var cityField: UITextField!
     
+    private var selectedCity: City?
+    private var cities: [City]?
+    
     private var signUpRequest: Alamofire.DataRequest?
     private var signInRequest: Alamofire.DataRequest?
     private var getUserDataRequest: Alamofire.DataRequest?
     private var getCitiesRequest: Alamofire.DataRequest?
     
-    private var cityPicker: CustomPickerView?
+    private var cityPickerView: CustomPickerView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityPicker = CustomPickerView()
-        cityPicker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        cityPicker?.delegate = cityPicker
-        cityPicker?.dataSource = cityPicker
-        cityPicker?.textFieldBeingEdited = cityField
-        getCitiesRequest = Requests.instance.getCities { success in
+        cityPickerView = CustomPickerView()
+        cityPickerView?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        cityPickerView?.delegate = cityPickerView
+        cityPickerView?.dataSource = cityPickerView
+        cityPickerView?.textFieldBeingEdited = cityField
+        cityPickerView?.typeObjects = .Cities
+        cityPickerView?.pickerDidChange = { city, index in
+            self.selectedCity = city as? City
+        }
+        
+        getCitiesRequest = Requests.instance.getCities { success, cities in
             if success {
-                self.cityPicker?.data = OtherData.instance.cities
-                self.cityPicker?.reloadAllComponents()
+                self.cities = cities!
+                self.cityPickerView?.data = cities!
+                self.cityPickerView?.reloadAllComponents()
             }
         }
 
@@ -45,7 +54,8 @@ class SignUpVC: KeyboardVC {
         passwordField.attributedPlaceholder = NSAttributedString(string: "Пароль", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6156862745, green: 0.6117647059, blue: 0.6117647059, alpha: 1)])
         repeatPasswordField.attributedPlaceholder = NSAttributedString(string: "Повторите пароль", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6156862745, green: 0.6117647059, blue: 0.6117647059, alpha: 1)])
         cityField.attributedPlaceholder = NSAttributedString(string: "Город", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6156862745, green: 0.6117647059, blue: 0.6117647059, alpha: 1)])
-        cityField.inputView = cityPicker
+        
+        cityField.inputView = cityPickerView
         
         let backButtonImg = UIImage(named: "backButton")
         let backButton = UIBarButtonItem(image: backButtonImg, style: .plain, target: self, action: #selector(popSignUp))
@@ -62,6 +72,7 @@ class SignUpVC: KeyboardVC {
     }
     
     @objc func popSignUp() {
+        self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -71,16 +82,16 @@ class SignUpVC: KeyboardVC {
         guard let email = emailField.text else { return }
         guard let password = passwordField.text else { return }
         guard let repeatPassword = repeatPasswordField.text else { return }
-        guard let city = cityField.text else { return }
+        guard let cityName = cityField.text else { return }
         
         view.endEditing(true)
         
-        if !isUserDataValid(name: name, email: email, password: password, repeatPassword: repeatPassword, city: city, true) { return }
+        if !isUserDataValid(name: name, email: email, password: password, repeatPassword: repeatPassword, city: cityName, true) { return }
         
         // todo show loading indicator
         // ...
         
-        signUpRequest = Requests.instance.signUp(name: name, email: email, password: password, city: city) { (success, message) in
+        signUpRequest = Requests.instance.signUp(name: name, email: email, password: password, city: selectedCity!) { (success, message) in
             self.signUpRequest = nil
             if !success {
                 // todo hide loading indicator

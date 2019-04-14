@@ -12,9 +12,9 @@ class Cinema {
     public private(set) var id: Int!
     public private(set) var name: String!
     public private(set) var address: String!
-    public private(set) var formats: [String]!
+    public private(set) var formats: [Format]!
     
-    init(id: Int, name: String, address: String, formats: [String]) {
+    init(id: Int, name: String, address: String, formats: [Format]) {
         self.id = id
         self.name = name
         self.address = address
