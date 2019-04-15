@@ -20,6 +20,8 @@ class Requests {
         case getCities = "http://localhost/v1/cities"
         case getFormats = "http://localhost/v1/formats"
         case getCinemas = "http://localhost/v1/cinemas"
+        case getFilms = "http://localhost/v1/films"
+        case getGenres = "http://localhost/v1/genres"
     }
     private let headers: [String: String] = [
         "Content-Type": "application/json"
@@ -192,7 +194,40 @@ class Requests {
         return request
     }
     
-    func getCinemas(city: City = UserData.instance.city!, formats: [Format] = [], completion: ((_ success: Bool) -> Void)?) -> Alamofire.DataRequest {
+    func getGenres(completion: ((_ success: Bool, _ genres: [Genre]?) -> Void)?) -> Alamofire.DataRequest {
+        let request = Alamofire.request(Urls.getGenres.rawValue, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let jsonGenres = json["genres"].arrayValue
+            
+            let genres = jsonGenres.map({ jsonGenre -> Genre in
+                let genre = jsonGenre.dictionaryValue
+                let id = genre["id"]!.intValue
+                let name = genre["name"]!.stringValue
+                return Genre(id: id, name: name)
+            });
+            
+            completion?(true, genres)
+        }
+        
+        return request
+    }
+    
+    func getCinemas(city: City = UserData.instance.city!, formats: [Format] = [], completion: ((_ success: Bool, _ cinemas: [Cinema]?) -> Void)?) -> Alamofire.DataRequest {
         var headers: [String: String] = [
             "X-Session-Token": UserData.instance.token!
         ]
@@ -211,7 +246,7 @@ class Requests {
         request.responseJSON { response in
             if let error = response.error {
                 debugPrint(error)
-                completion?(false)
+                completion?(false, nil)
                 return
             }
             
@@ -219,25 +254,76 @@ class Requests {
             let json = JSON(result)
             
             if !json["success"].boolValue {
-                completion?(false)
+                completion?(false, nil)
                 return
             }
             
-            let cinemas = json["cinemas"].dictionaryValue
-            OtherData.instance.clearCinemas()
-            for (idString, cinema) in cinemas {
-                let id = Int(idString)!
-                let name = cinema["name"].stringValue
-                let address = cinema["address"].stringValue
-                let formats = cinema["formats"].arrayValue.map { Format(id: $0.dictionaryValue["id"]!.intValue, name: $0.dictionaryValue["name"]!.stringValue) }
-                
-                let cinemaObject = Cinema(id: id, name: name, address: address, formats: formats)
-                OtherData.instance.addCinema(cinemaObject)
-            }
+            let jsonCinemas = json["cinemas"].dictionaryValue
             
-            completion?(true)
+            let cinemas = jsonCinemas.map({ (key: String, jsonCinema: JSON) -> Cinema in
+                let id = Int(key)!
+                let name = jsonCinema["name"].stringValue
+                let address = jsonCinema["address"].stringValue
+                let formats = jsonCinema["formats"].arrayValue.map { Format(id: $0.dictionaryValue["id"]!.intValue, name: $0.dictionaryValue["name"]!.stringValue) }
+                return Cinema(id: id, name: name, address: address, formats: formats)
+            })
+            
+            completion?(true, cinemas)
         }
         
         return request;
+    }
+    
+    func getFilms(cinemaId: Int?, genres: [Genre] = [], completion: ((_ success: Bool, _ films: [Film]?) -> Void)?) -> Alamofire.DataRequest {
+        var headers: [String: String] = [
+            "X-Session-Token": UserData.instance.token!
+        ]
+        headers.merge(self.headers) { (current, _) -> String in
+            current
+        }
+        let genresIds = genres.map { genre -> Int in
+            return genre.id
+        }
+        
+        var params: [String: Any] = [
+            "genres": genresIds
+        ]
+        if let cinemaId = cinemaId {
+            params["cinemaId"] = cinemaId
+        }
+        
+        let request = Alamofire.request(Urls.getFilms.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let films: [Film] = json["films"].dictionaryValue.map({ (key: String, value: JSON) -> Film in
+                let id = Int(key)!
+                let name = value["name"].stringValue
+                let genres: [Genre] = value["genres"].arrayValue.map({ jsonGenre -> Genre in
+                    return Genre(id: jsonGenre["id"].intValue, name: jsonGenre["name"].stringValue)
+                })
+                let formats: [Format] = value["formats"].arrayValue.map({ jsonFormat -> Format in
+                    return Format(id: jsonFormat["id"].intValue, name: jsonFormat["name"].stringValue)
+                })
+                return Film(id: id, name: name, genres: genres, formats: formats)
+            })
+            
+            completion?(true, films)
+        }
+        
+        return request
     }
 }

@@ -8,6 +8,14 @@
 
 import Foundation
 
+enum SelectCellFor {
+    case Format
+    case Genre
+}
+enum PickerCellFor {
+    case Cities
+}
+
 let USER_HAS_ENTERED = "USER HAS ENTERED"
 let USER_HAS_LOGGED_OUT = "USER HAS LOGGED OUT"
 

@@ -13,11 +13,18 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var cinemasTableView: UITableView!
     
+    private enum SegueNames: String {
+        case showFilmsSegue = "showFilmsSegue"
+    }
+    
     private var getCinemasRequest: Alamofire.DataRequest?
     private var getCitiesRequest: Alamofire.DataRequest?
     private var getFormatsRequest: Alamofire.DataRequest?
     
-    private let cinemaFiltersHeaders = [
+    private var cinemas: [Cinema] = []
+    private var selectedCinema: Cinema?
+    
+    private let cinemasFilterHeaders = [
         "Город",
         "Форматы"
     ]
@@ -35,11 +42,11 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
         filterButton.tintColor = #colorLiteral(red: 0.8717461228, green: 0.8868257403, blue: 0.8863963485, alpha: 1)
         self.navigationItem.rightBarButtonItem = filterButton
         
-        getCinemasRequest = Requests.instance.getCinemas { success in
+        getCinemasRequest = Requests.instance.getCinemas { success, cinemas in
             // check is user entered (pass param fot this case from server)
             // if user has not entered, clear user data and show signIn view
             // write function for this goal
-            
+            self.cinemas = cinemas!
             self.cinemasTableView.reloadData()
             
             self.getCinemasRequest = nil
@@ -59,14 +66,14 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
                     FilterCell(identifier: "pickerCell", items: [
                         PickerFilter(items: cities!, selected: cities!.first(where: { city -> Bool in
                             return city.id == UserData.instance.city?.id
-                        }))
+                        }), typeObjects: .Cities)
                     ]),
                     FilterCell(identifier: "selectCell", items: formats!.map({ format -> SelectFilter in
-                            return SelectFilter(data: format);
+                        return SelectFilter(data: format, typeObjects: .Format);
                         })
                     )
                 ]
-                self.cinemasFilterVC.headers = self.cinemaFiltersHeaders
+                self.cinemasFilterVC.headers = self.cinemasFilterHeaders
                 self.cinemasFilterVC.data = self.cinemasFilterCells
                 self.cinemasFilterVC.filtersTableView.reloadData()
                 self.cinemasFilterVC.applyButton.addTarget(self, action: #selector(self.applyFiltersButtonPressed), for: .touchUpInside)
@@ -103,7 +110,8 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        getCinemasRequest = Requests.instance.getCinemas(city: city, formats: formats) { success in
+        getCinemasRequest = Requests.instance.getCinemas(city: city, formats: formats) { success, cinemas in
+            self.cinemas = cinemas!
             self.cinemasTableView.reloadData()
             self.cinemasFilterVC.toggleFilter(false)
         }
@@ -119,24 +127,30 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return OtherData.instance.cinemas.count
+        return cinemas.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cinemaCell", for: indexPath) as! CinemaCell
         
-        let cinema = OtherData.instance.cinemas[indexPath.row]
+        let cinema = cinemas[indexPath.row]
         cell.setUpCell(cinema)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showFilmsSegue", sender: self)
+        selectedCinema = cinemas[indexPath.row]
+        performSegue(withIdentifier: SegueNames.showFilmsSegue.rawValue, sender: self)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == SegueNames.showFilmsSegue.rawValue {
+            if let tabBarController = segue.destination as? UITabBarController,
+            let cinemaFilmsVC = tabBarController.viewControllers?[0] as? CinemaFilmsVC {
+                cinemaFilmsVC.cinemaId = selectedCinema!.id
+            }
+        }
     }
     
 }

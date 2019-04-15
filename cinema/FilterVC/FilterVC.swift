@@ -68,12 +68,12 @@ class FilterVC: KeyboardVC, UITableViewDelegate, UITableViewDataSource {
         
         if let selectCell = cell as? SelectCell {
             let selectFilter = data[indexPath.section].items[indexPath.row] as! SelectFilter
-            selectCell.setUpCell(selectFilter: selectFilter, typeObjects: .Format)
+            selectCell.setUpCell(selectFilter: selectFilter)
         }
         
         if let pickerCell = cell as? PickerCell {
             let pickerFilter = data[indexPath.section].items[indexPath.row] as! PickerFilter
-            pickerCell.setUpCell(pickerFilter: pickerFilter, keyboardPicker: keyboardPicker!, typeObjects: .Cities)
+            pickerCell.setUpCell(pickerFilter: pickerFilter, keyboardPicker: keyboardPicker!)
         }
         
         return cell
@@ -82,10 +82,7 @@ class FilterVC: KeyboardVC, UITableViewDelegate, UITableViewDataSource {
 }
 
 class PickerCell: UITableViewCell {
-    enum PickerCellFor {
-        case Cities
-    }
-    var typeObjects: PickerCellFor?
+    var typeObjects: PickerCellFor!
     
     var filter: PickerFilter!
     var keyboardPicker: CustomPickerView!
@@ -93,9 +90,9 @@ class PickerCell: UITableViewCell {
     
     @IBOutlet var textField: UITextField!
     
-    func setUpCell(pickerFilter: PickerFilter, keyboardPicker: CustomPickerView, typeObjects: PickerCellFor) {
+    func setUpCell(pickerFilter: PickerFilter, keyboardPicker: CustomPickerView) {
         filter = pickerFilter
-        self.typeObjects = typeObjects
+        typeObjects = filter.typeObjects
         self.keyboardPicker = keyboardPicker
         if typeObjects == .Cities {
             textField.text = (filter.selected as! City).name
@@ -125,27 +122,29 @@ class PickerCell: UITableViewCell {
 }
 
 class SelectCell: UITableViewCell {
-    enum SelectCellFor {
-        case Format
-    }
-    
     var filter: SelectFilter!
     
     @IBOutlet var filterName: UILabel!
     @IBOutlet var filterSwitch: UISwitch!
     
-    var typeObjects: SelectCellFor?
+    var typeObjects: SelectCellFor!
     
     @IBAction func filterSwitchDidChange(_ sender: UISwitch) {
         filter.isOn = sender.isOn
     }
     
-    func setUpCell(selectFilter: SelectFilter, typeObjects: SelectCellFor) {
+    func setUpCell(selectFilter: SelectFilter) {
         filter = selectFilter
-        self.typeObjects = typeObjects
-        if typeObjects == .Format {
+        typeObjects = filter.typeObjects
+        switch typeObjects {
+        case .Format?:
             let format = filter.data as! Format
             filterName.text = format.name
+        case .Genre?:
+            let genre = filter.data as! Genre
+            filterName.text = genre.name
+        default:
+            filterName.text = ""
         }
         filterSwitch.isOn = filter.isOn
     }
