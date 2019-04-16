@@ -11,9 +11,9 @@ import Foundation
 class SelectFilter {
     var isOn: Bool = false
     var data: Any
-    var typeObjects: SelectCellFor
+    var typeObjects: SelectCellFor?
     
-    init(isOn: Bool = false, data: Any, typeObjects: SelectCellFor) {
+    init(isOn: Bool = false, data: Any, typeObjects: SelectCellFor?) {
         self.isOn = isOn
         self.data = data
         self.typeObjects = typeObjects

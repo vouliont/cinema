@@ -22,6 +22,8 @@ class Requests {
         case getCinemas = "http://localhost/v1/cinemas"
         case getFilms = "http://localhost/v1/films"
         case getGenres = "http://localhost/v1/genres"
+        case getFilm = "http://localhost/v1/film"
+        case getSessions = "http://localhost/v1/sessions"
     }
     private let headers: [String: String] = [
         "Content-Type": "application/json"
@@ -274,7 +276,7 @@ class Requests {
         return request;
     }
     
-    func getFilms(cinemaId: Int?, genres: [Genre] = [], completion: ((_ success: Bool, _ films: [Film]?) -> Void)?) -> Alamofire.DataRequest {
+    func getFilms(cinemaId: Int?, genres: [Genre] = [], partsOfDay: [PartsOfDay] = [], completion: ((_ success: Bool, _ films: [Film]?) -> Void)?) -> Alamofire.DataRequest {
         var headers: [String: String] = [
             "X-Session-Token": UserData.instance.token!
         ]
@@ -290,6 +292,11 @@ class Requests {
         ]
         if let cinemaId = cinemaId {
             params["cinemaId"] = cinemaId
+        }
+        if partsOfDay.count != 0 {
+            params["partsOfDay"] = partsOfDay.map({ partOfDay -> String in
+                return partOfDay.description
+            })
         }
         
         let request = Alamofire.request(Urls.getFilms.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
@@ -322,6 +329,106 @@ class Requests {
             })
             
             completion?(true, films)
+        }
+        
+        return request
+    }
+    
+    func getFilm(filmId: Int, completion: ((_ success: Bool, _ film: [String: Any]?) -> Void)?) -> Alamofire.DataRequest {
+        var headers: [String: String] = [
+            "X-Session-Token": UserData.instance.token!
+        ]
+        headers.merge(self.headers) { (current, _) -> String in
+            current
+        }
+        let params: [String: Any] = [
+            "filmId": filmId
+        ]
+        
+        let request = Alamofire.request(Urls.getFilm.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers);
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let jsonFilm = json["film"].dictionaryValue
+            
+            let film: [String: Any] = [
+                "name": jsonFilm["name"]!.stringValue,
+                "description": jsonFilm["description"]!.stringValue,
+                "duration": jsonFilm["duration"]!.intValue,
+                "director": jsonFilm["director"]!.stringValue,
+                "genres": jsonFilm["genres"]!.arrayValue.map({ jsonGenre -> String in
+                    return jsonGenre.stringValue
+                })
+            ]
+            
+            completion?(true, film)
+        }
+        
+        return request
+    }
+    
+    func getSessions(filmId: Int, cinemaId: Int?, partsOfDay: [PartsOfDay] = [], completion: ((_ success: Bool, _ sessionsHeaders: [String]?, _ sessionsData: [[Double]]?) -> Void)?) -> Alamofire.DataRequest {
+        var headers: [String: String] = [
+            "X-Session-Token": UserData.instance.token!
+        ]
+        headers.merge(self.headers) { (current, _) -> String in
+            current
+        }
+        
+        var params: [String: Any] = [
+            "filmId": filmId
+        ]
+        if let cinemaId = cinemaId {
+            params["cinemaId"] = cinemaId
+        }
+        if partsOfDay.count != 0 {
+            params["partsOfDay"] = partsOfDay.map({ partOfDay -> String in
+                return partOfDay.description
+            })
+        }
+        
+        let request = Alamofire.request(Urls.getSessions.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil, nil)
+                return
+            }
+            
+            var sessionsHeaders: [String] = []
+            var sessionsData: [[Double]] = []
+            
+            json["sessions"].dictionaryValue.forEach({ (key: String, value: JSON) in
+                let jsonCinema = value.dictionaryValue
+                sessionsHeaders.append(jsonCinema["name"]!.stringValue)
+                sessionsData.append(jsonCinema["times"]!.arrayValue.map({ jsonTimes -> Double in
+                    return jsonTimes.doubleValue
+                }).sorted())
+            })
+            
+            completion?(true, sessionsHeaders, sessionsData)
         }
         
         return request

@@ -11,9 +11,28 @@ import Foundation
 enum SelectCellFor {
     case Format
     case Genre
+    case PartOfDay
 }
 enum PickerCellFor {
     case Cities
+}
+
+enum PartsOfDay: String, CaseIterable {
+    case morning = "Утро"
+    case afternoon = "День"
+    case evening = "Вечер"
+    var description: String {
+        get {
+            switch self {
+            case .morning:
+                return "morning"
+            case .afternoon:
+                return "afternoon"
+            case .evening:
+                return "evening"
+            }
+        }
+    }
 }
 
 let USER_HAS_ENTERED = "USER HAS ENTERED"

@@ -67,11 +67,11 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
                         PickerFilter(items: cities!, selected: cities!.first(where: { city -> Bool in
                             return city.id == UserData.instance.city?.id
                         }), typeObjects: .Cities)
-                    ]),
+                        ]
+                    ),
                     FilterCell(identifier: "selectCell", items: formats!.map({ format -> SelectFilter in
                         return SelectFilter(data: format, typeObjects: .Format);
-                        })
-                    )
+                    }))
                 ]
                 self.cinemasFilterVC.headers = self.cinemasFilterHeaders
                 self.cinemasFilterVC.data = self.cinemasFilterCells
@@ -143,11 +143,11 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
         selectedCinema = cinemas[indexPath.row]
         performSegue(withIdentifier: SegueNames.showFilmsSegue.rawValue, sender: self)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueNames.showFilmsSegue.rawValue {
             if let tabBarController = segue.destination as? UITabBarController,
-            let cinemaFilmsVC = tabBarController.viewControllers?[0] as? CinemaFilmsVC {
+                let cinemaFilmsVC = tabBarController.viewControllers?[0] as? CinemaFilmsVC {
                 cinemaFilmsVC.cinemaId = selectedCinema!.id
             }
         }

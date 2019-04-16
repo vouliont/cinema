@@ -13,19 +13,26 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var filmsTableView: UITableView!
     
+    private enum SegueNames: String {
+        case showFilmSegue = "showFilmSegue"
+    }
+    
     var cinemaId: Int?
+    var partsOfDay: [PartsOfDay]?
     
     private var getGenresRequest: Alamofire.DataRequest?
     private var getFilmsRequest: Alamofire.DataRequest?
     
     private var films: [Film] = []
-    
     private let filmsFilterHeaders = [
-        "Жанры"
+        "Жанры",
+        "Часть дня"
     ]
     private var filmsFilterCells: [FilterCell] = []
-    
     private var filmsFilterVC: FilterVC!
+    private var selectedFilm: Film?
+    
+    private var filterButton: UIBarButtonItem!
     
     private let screenSize = UIScreen.main.bounds
     
@@ -33,14 +40,8 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         
         let filterButtonImg = UIImage(named: "filter")
-        let filterButton = UIBarButtonItem(image: filterButtonImg, style: .plain, target: self, action: #selector(openFilterButtonPressed))
+        filterButton = UIBarButtonItem(image: filterButtonImg, style: .plain, target: self, action: #selector(openFilterButtonPressed))
         filterButton.tintColor = #colorLiteral(red: 0.8717461228, green: 0.8868257403, blue: 0.8863963485, alpha: 1)
-        
-        if let cinemaFilmsVC = self.parent as? CinemaFilmsVC {
-            cinemaFilmsVC.navigationItem.rightBarButtonItem = filterButton
-        } else {
-            self.navigationItem.rightBarButtonItem = filterButton
-        }
         
         getFilmsRequest = Requests.instance.getFilms(cinemaId: cinemaId, completion: { success, films in
             if success {
@@ -60,8 +61,10 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
             self.filmsFilterCells = [
                 FilterCell(identifier: "selectCell", items: genres!.map({ genre -> SelectFilter in
                     return SelectFilter(data: genre, typeObjects: .Genre);
-                })
-                )
+                })),
+                FilterCell(identifier: "selectCell", items: PartsOfDay.allCases.map({ partOfDay -> SelectFilter in
+                    return SelectFilter(data: partOfDay, typeObjects: .PartOfDay)
+                }))
             ]
             self.filmsFilterVC.headers = self.filmsFilterHeaders
             self.filmsFilterVC.data = self.filmsFilterCells
@@ -73,6 +76,13 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if self.parent is CinemaFilmsVC {
+            tabBarController?.navigationItem.rightBarButtonItem = filterButton
+            tabBarController?.navigationItem.title = "Фильмы"
+        } else {
+            self.navigationItem.rightBarButtonItem = filterButton
+        }
+        
         filmsFilterVC.view.bounds = self.view.bounds
         filmsFilterVC.view.frame.origin.x = screenSize.width
         filmsFilterVC.view.frame.origin.y = 0
@@ -81,6 +91,7 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        filmsFilterVC.toggleFilter(false)
         getFilmsRequest?.cancel()
         getGenresRequest?.cancel()
     }
@@ -100,8 +111,17 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        getFilmsRequest = Requests.instance.getFilms(cinemaId: cinemaId, genres: genres, completion: { success, films in
-            self.films = films!
+        var partsOfDay: [PartsOfDay] = []
+        filmsFilterCells[1].items.forEach { partOfDay in
+            guard let partOfDay = partOfDay as? SelectFilter else { return }
+            if partOfDay.isOn {
+                partsOfDay.append(partOfDay.data as! PartsOfDay)
+            }
+        }
+        self.partsOfDay = partsOfDay
+        
+        getFilmsRequest = Requests.instance.getFilms(cinemaId: cinemaId, genres: genres, partsOfDay: partsOfDay, completion: { success, films in
+            self.films = films ?? []
             self.filmsTableView.reloadData()
             self.filmsFilterVC.toggleFilter(false)
         })
@@ -122,6 +142,21 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
         cell.setupCell(film: film)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedFilm = films[indexPath.row]
+        performSegue(withIdentifier: SegueNames.showFilmSegue.rawValue, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueNames.showFilmSegue.rawValue {
+            if let filmVC = segue.destination as? FilmVC {
+                filmVC.filmId = selectedFilm!.id
+                filmVC.cinemaId = cinemaId
+                filmVC.partsOfDay = partsOfDay
+            }
+        }
     }
     
 }

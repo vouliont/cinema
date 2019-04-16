@@ -143,8 +143,15 @@ class SelectCell: UITableViewCell {
         case .Genre?:
             let genre = filter.data as! Genre
             filterName.text = genre.name
+        case .PartOfDay?:
+            let partOfDay = filter.data as! PartsOfDay
+            filterName.text = partOfDay.rawValue
         default:
-            filterName.text = ""
+            if let str = filter.data as? String {
+                filterName.text = str
+            } else {
+                filterName.text = ""
+            }
         }
         filterSwitch.isOn = filter.isOn
     }
