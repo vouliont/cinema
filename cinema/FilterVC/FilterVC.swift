@@ -99,6 +99,17 @@ class PickerCell: UITableViewCell {
             self.selectedItemIndex = (filter.items as! [City]).firstIndex(where: { city -> Bool in
                 return city.id == (filter.selected as! City).id
             }) ?? 0
+        } else if typeObjects == .FoodTypes {
+            if let selected = filter.selected {
+                textField.text = (selected as! FoodType).name
+                self.selectedItemIndex = (filter.items as! [FoodType]).firstIndex(where: { foodType -> Bool in
+                    return foodType.id == (selected as! FoodType).id
+                }) ?? 0
+            }
+        } else if typeObjects == .Months {
+            if let selected = filter.selected as? Int {
+                textField.text = (filter.items as! [String])[selected]
+            }
         }
         textField.inputView = keyboardPicker
         textField.attributedPlaceholder = NSAttributedString(string: pickerFilter.placeholder, attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6156862745, green: 0.6117647059, blue: 0.6117647059, alpha: 1)])
@@ -109,10 +120,22 @@ class PickerCell: UITableViewCell {
         keyboardPicker.data = filter.items
         if typeObjects == .Cities {
             keyboardPicker.typeObjects = .Cities
+        } else if typeObjects == .FoodTypes {
+            keyboardPicker.typeObjects = .FoodTypes
+        } else if typeObjects == .Months {
+            keyboardPicker.typeObjects = .Months
+            self.selectedItemIndex = filter.selected as! Int
         }
         keyboardPicker.reloadAllComponents()
         keyboardPicker.pickerDidChange = { item, index in
-            self.filter.selected = item as! City
+            if self.keyboardPicker.typeObjects == .Cities {
+                self.filter.selected = item as! City
+            } else if self.keyboardPicker.typeObjects == .FoodTypes {
+                self.filter.selected = item as! FoodType
+            } else if self.keyboardPicker.typeObjects == .Months {
+                self.filter.selected = index
+            }
+            
             self.selectedItemIndex = index!
         }
         

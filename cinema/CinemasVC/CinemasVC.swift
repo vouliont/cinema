@@ -12,6 +12,7 @@ import Alamofire
 class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var cinemasTableView: UITableView!
+    @IBOutlet var addressTextField: UITextField!
     
     private enum SegueNames: String {
         case showFilmsSegue = "showFilmsSegue"
@@ -46,7 +47,7 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
             // check is user entered (pass param fot this case from server)
             // if user has not entered, clear user data and show signIn view
             // write function for this goal
-            self.cinemas = cinemas!
+            self.cinemas = cinemas ?? []
             self.cinemasTableView.reloadData()
             
             self.getCinemasRequest = nil
@@ -59,20 +60,25 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
         getCitiesRequest = Requests.instance.getCities { success, cities in
             if !success { return }
             
-            self.getFormatsRequest = Requests.instance.getFormats { success, formats in
-                if !success { return }
-                
-                self.cinemasFilterCells = [
+            self.cinemasFilterCells = []
+            if let cities = cities {
+                self.cinemasFilterCells.append(
                     FilterCell(identifier: "pickerCell", items: [
-                        PickerFilter(items: cities!, selected: cities!.first(where: { city -> Bool in
-                            return city.id == UserData.instance.city?.id
-                        }), typeObjects: .Cities)
-                        ]
-                    ),
-                    FilterCell(identifier: "selectCell", items: formats!.map({ format -> SelectFilter in
+                    PickerFilter(items: cities, selected: cities.first(where: { city -> Bool in
+                        return city.id == UserData.instance.city?.id
+                    }), typeObjects: .Cities)
+                    ]
+                ))
+            }
+            
+            self.getFormatsRequest = Requests.instance.getFormats { success, formats in
+                if success, let formats = formats {
+                    self.cinemasFilterCells.append(
+                        FilterCell(identifier: "selectCell", items: formats.map({ format -> SelectFilter in
                         return SelectFilter(data: format, typeObjects: .Format);
-                    }))
-                ]
+                    })))
+                }
+                
                 self.cinemasFilterVC.headers = self.cinemasFilterHeaders
                 self.cinemasFilterVC.data = self.cinemasFilterCells
                 self.cinemasFilterVC.filtersTableView.reloadData()
@@ -110,8 +116,10 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        getCinemasRequest = Requests.instance.getCinemas(city: city, formats: formats) { success, cinemas in
-            self.cinemas = cinemas!
+        let address = addressTextField.text ?? ""
+        
+        getCinemasRequest = Requests.instance.getCinemasWithAddress(city: city, formats: formats, address: address) { success, cinemas in
+            self.cinemas = cinemas ?? []
             self.cinemasTableView.reloadData()
             self.cinemasFilterVC.toggleFilter(false)
         }
@@ -146,9 +154,16 @@ class CinemasVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueNames.showFilmsSegue.rawValue {
-            if let tabBarController = segue.destination as? UITabBarController,
-                let cinemaFilmsVC = tabBarController.viewControllers?[0] as? CinemaFilmsVC {
-                cinemaFilmsVC.cinemaId = selectedCinema!.id
+            if let tabBarController = segue.destination as? UITabBarController {
+                if let cinemaFilmsVC = tabBarController.viewControllers?[0] as? CinemaFilmsVC {
+                    cinemaFilmsVC.cinemaId = selectedCinema!.id
+                }
+                if let cinemaFoodVC = tabBarController.viewControllers?[1] as? CinemaFoodVC {
+                    cinemaFoodVC.cinemaId = selectedCinema!.id
+                }
+                if let cinemaPromotionVC = tabBarController.viewControllers?[2] as? CinemaPromotionVC {
+                    cinemaPromotionVC.cinemaId = selectedCinema!.id
+                }
             }
         }
     }

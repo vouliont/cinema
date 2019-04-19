@@ -147,7 +147,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqU-Nc-Wwb" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="577.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="724.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Форсаж 8" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qM9-hg-cmp">
                                                 <rect key="frame" x="16" y="32" width="222.5" height="33.5"/>
@@ -238,7 +238,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SSL-mb-D4g">
-                                                <rect key="frame" x="16" y="411.5" width="343" height="150"/>
+                                                <rect key="frame" x="16" y="558.5" width="343" height="150"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="150" id="8v4-wd-kf9"/>
@@ -320,20 +320,105 @@
                                                 </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сеансы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5Y-uj-JUm">
-                                                <rect key="frame" x="24" y="378.5" width="68" height="21.5"/>
+                                                <rect key="frame" x="24" y="525.5" width="68" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TWi-Rn-ATv">
+                                                <rect key="frame" x="16" y="409.5" width="343" height="100"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="S0f-0J-iaK"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YEB-F7-Fsk">
+                                                    <size key="itemSize" width="145" height="97"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="actorCell" id="bHA-He-E8W" customClass="ActorCell" customModule="cinema" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="100"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Thm-Wb-LQG" customClass="BorderedImageView" customModule="cinema" customModuleProvider="target">
+                                                                    <rect key="frame" x="3" y="3" width="154" height="72"/>
+                                                                    <color key="backgroundColor" red="0.18039215689999999" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="6"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Скарлетт Йоханссон" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73X-WZ-PWg">
+                                                                    <rect key="frame" x="3" y="79" width="154" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstItem="Thm-Wb-LQG" firstAttribute="leading" secondItem="bHA-He-E8W" secondAttribute="leading" constant="3" id="6Eo-6I-tQC"/>
+                                                            <constraint firstItem="Thm-Wb-LQG" firstAttribute="top" secondItem="bHA-He-E8W" secondAttribute="top" constant="3" id="6cj-GG-yVh"/>
+                                                            <constraint firstAttribute="trailing" secondItem="73X-WZ-PWg" secondAttribute="trailing" constant="3" id="S9o-VH-vd8"/>
+                                                            <constraint firstAttribute="bottom" secondItem="73X-WZ-PWg" secondAttribute="bottom" constant="4" id="dyi-ee-7Cc"/>
+                                                            <constraint firstItem="73X-WZ-PWg" firstAttribute="leading" secondItem="bHA-He-E8W" secondAttribute="leading" constant="3" id="qMJ-cJ-tZf"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Thm-Wb-LQG" secondAttribute="trailing" constant="3" id="rwO-BS-aZ7"/>
+                                                            <constraint firstItem="73X-WZ-PWg" firstAttribute="top" secondItem="Thm-Wb-LQG" secondAttribute="bottom" constant="4" id="uqf-ML-aVR"/>
+                                                        </constraints>
+                                                        <size key="customSize" width="160" height="100"/>
+                                                        <connections>
+                                                            <outlet property="actorNameLabel" destination="73X-WZ-PWg" id="tAj-Ty-PM0"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="wAy-Up-U2W" id="GwP-Ec-9Zv"/>
+                                                    <outlet property="delegate" destination="wAy-Up-U2W" id="xW4-lV-VwJ"/>
+                                                </connections>
+                                            </collectionView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mjL-kQ-TPZ">
+                                                <rect key="frame" x="16" y="370.5" width="343" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мужской пол" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5V-JY-SA3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="139" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" red="0.74901960779999999" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SWi-3x-IHX">
+                                                        <rect key="frame" x="147" y="0.0" width="51" height="31"/>
+                                                        <color key="onTintColor" red="0.96078431369999995" green="0.71764705880000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <connections>
+                                                            <action selector="sexSwitchValueChanged:" destination="wAy-Up-U2W" eventType="valueChanged" id="Eao-Rn-OAM"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Женский пол" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enb-Zd-cwI">
+                                                        <rect key="frame" x="204" y="0.0" width="139" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" red="0.74901960779999999" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="o5V-JY-SA3" firstAttribute="width" secondItem="enb-Zd-cwI" secondAttribute="width" id="BLw-Fw-pyz"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="mjL-kQ-TPZ" secondAttribute="trailing" constant="16" id="26r-jG-q7W"/>
                                             <constraint firstItem="dm5-xh-Qde" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WQl-9p-PkM" secondAttribute="bottom" priority="750" constant="32" id="2bL-pD-eXK"/>
                                             <constraint firstItem="qM9-hg-cmp" firstAttribute="top" secondItem="pqU-Nc-Wwb" secondAttribute="top" constant="32" id="58M-J3-jsm"/>
                                             <constraint firstItem="EL7-AF-9GF" firstAttribute="leading" secondItem="qM9-hg-cmp" secondAttribute="trailing" constant="8" id="6hZ-gy-2qm"/>
                                             <constraint firstItem="EL7-AF-9GF" firstAttribute="leading" secondItem="jzl-rO-eQj" secondAttribute="trailing" constant="8" id="8y0-Ms-Ta6"/>
                                             <constraint firstItem="WQl-9p-PkM" firstAttribute="top" secondItem="jzl-rO-eQj" secondAttribute="bottom" constant="16" id="BG1-91-3Fq"/>
-                                            <constraint firstItem="H5Y-uj-JUm" firstAttribute="top" secondItem="dm5-xh-Qde" secondAttribute="bottom" constant="24" id="ESO-dx-DLK"/>
+                                            <constraint firstItem="mjL-kQ-TPZ" firstAttribute="top" secondItem="dm5-xh-Qde" secondAttribute="bottom" constant="16" id="GjS-zW-Ke6"/>
                                             <constraint firstItem="EL7-AF-9GF" firstAttribute="top" secondItem="pqU-Nc-Wwb" secondAttribute="top" constant="32" id="H0C-u2-6AQ"/>
                                             <constraint firstItem="jzl-rO-eQj" firstAttribute="leading" secondItem="qM9-hg-cmp" secondAttribute="leading" id="IZH-50-7fp"/>
                                             <constraint firstItem="WQl-9p-PkM" firstAttribute="leading" secondItem="pqU-Nc-Wwb" secondAttribute="leading" constant="16" id="PVE-Ty-hfC"/>
@@ -341,13 +426,18 @@
                                             <constraint firstAttribute="trailing" secondItem="dm5-xh-Qde" secondAttribute="trailing" constant="16" id="S7I-aP-dOQ"/>
                                             <constraint firstItem="jzl-rO-eQj" firstAttribute="top" secondItem="qM9-hg-cmp" secondAttribute="bottom" constant="2" id="UBb-VM-UV8"/>
                                             <constraint firstItem="qM9-hg-cmp" firstAttribute="leading" secondItem="pqU-Nc-Wwb" secondAttribute="leading" constant="16" id="Vsw-QM-0Er"/>
+                                            <constraint firstAttribute="trailing" secondItem="TWi-Rn-ATv" secondAttribute="trailing" constant="16" id="bQX-bn-NOR"/>
                                             <constraint firstAttribute="trailing" secondItem="SSL-mb-D4g" secondAttribute="trailing" constant="16" id="bTk-YA-5Sf"/>
                                             <constraint firstItem="SSL-mb-D4g" firstAttribute="top" secondItem="H5Y-uj-JUm" secondAttribute="bottom" constant="11.5" id="bmF-1R-Qfo"/>
+                                            <constraint firstItem="TWi-Rn-ATv" firstAttribute="leading" secondItem="pqU-Nc-Wwb" secondAttribute="leading" constant="16" id="c6e-Ic-nK0"/>
+                                            <constraint firstItem="TWi-Rn-ATv" firstAttribute="top" secondItem="mjL-kQ-TPZ" secondAttribute="bottom" constant="8" id="iju-tG-TIM"/>
                                             <constraint firstItem="SSL-mb-D4g" firstAttribute="leading" secondItem="pqU-Nc-Wwb" secondAttribute="leading" constant="16" id="m4c-k3-uMz"/>
                                             <constraint firstAttribute="trailing" secondItem="EL7-AF-9GF" secondAttribute="trailing" constant="16" id="nwd-xf-Ktw"/>
+                                            <constraint firstItem="mjL-kQ-TPZ" firstAttribute="leading" secondItem="pqU-Nc-Wwb" secondAttribute="leading" constant="16" id="oLj-dW-adt"/>
                                             <constraint firstItem="EL7-AF-9GF" firstAttribute="width" relation="lessThanOrEqual" secondItem="pqU-Nc-Wwb" secondAttribute="width" multiplier="0.3" id="rRF-xe-LXv"/>
                                             <constraint firstItem="H5Y-uj-JUm" firstAttribute="leading" secondItem="pqU-Nc-Wwb" secondAttribute="leading" constant="24" id="tHD-8g-ebO"/>
                                             <constraint firstItem="dm5-xh-Qde" firstAttribute="top" secondItem="EL7-AF-9GF" secondAttribute="bottom" priority="250" constant="32" id="tNS-FL-8om"/>
+                                            <constraint firstItem="H5Y-uj-JUm" firstAttribute="top" secondItem="TWi-Rn-ATv" secondAttribute="bottom" constant="16" id="tkC-hs-9P0"/>
                                             <constraint firstItem="dm5-xh-Qde" firstAttribute="leading" secondItem="pqU-Nc-Wwb" secondAttribute="leading" constant="16" id="yHk-fa-Ywc"/>
                                             <constraint firstAttribute="bottom" secondItem="SSL-mb-D4g" secondAttribute="bottom" priority="998" constant="16" id="ziV-JY-wuN"/>
                                         </constraints>
@@ -372,6 +462,7 @@
                         <viewLayoutGuide key="safeArea" id="OPT-d3-GQu"/>
                     </view>
                     <connections>
+                        <outlet property="actorsCollectionView" destination="TWi-Rn-ATv" id="3py-be-156"/>
                         <outlet property="filmDescriptionLabel" destination="dm5-xh-Qde" id="6TP-Ct-ywi"/>
                         <outlet property="filmDirectorLabel" destination="lE4-cw-Nae" id="DLo-VS-9Qf"/>
                         <outlet property="filmDurationLabel" destination="T0Z-Aa-U8c" id="rOz-gc-hQG"/>
@@ -380,6 +471,7 @@
                         <outlet property="filmNameLabel" destination="qM9-hg-cmp" id="iGB-Hd-Y3W"/>
                         <outlet property="sessionsCollectionView" destination="SSL-mb-D4g" id="H2T-P1-U5g"/>
                         <outlet property="sessionsCollectionViewHeight" destination="8v4-wd-kf9" id="vLh-mF-GRH"/>
+                        <outlet property="sexSwitch" destination="SWi-3x-IHX" id="3yh-Fm-jJ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1R-U1-klt" userLabel="First Responder" sceneMemberID="firstResponder"/>

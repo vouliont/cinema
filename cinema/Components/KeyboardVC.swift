@@ -15,6 +15,8 @@ class KeyboardVC: UIViewController {
     @IBOutlet weak var contentViewTopConstraint: NSLayoutConstraint?
     @IBOutlet weak var contentViewBottomConstraint: NSLayoutConstraint?
     
+    var bottomHeight: CGFloat = 0
+    
     private var isLoadingFirstTime = true
     private var keyboardHeight: CGFloat = 0 {
         didSet {
@@ -73,7 +75,7 @@ class KeyboardVC: UIViewController {
     }
     
     private func repositionContentView() {
-        contentViewBottomConstraint!.constant = keyboardHeight
+        contentViewBottomConstraint!.constant = max(0, keyboardHeight - bottomHeight)
         if UIView.areAnimationsEnabled {
             UIView.animate(withDuration: 0.2) {
                 self.contentView.superview!.layoutIfNeeded()

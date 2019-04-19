@@ -24,6 +24,13 @@ class Requests {
         case getGenres = "http://localhost/v1/genres"
         case getFilm = "http://localhost/v1/film"
         case getSessions = "http://localhost/v1/sessions"
+        case getFoodTypes = "http://localhost/v1/foodtypes"
+        case getFood = "http://localhost/v1/food"
+        case getPromotions = "http://localhost/v1/promotions"
+        case getActors = "http://localhost/v1/actors"
+        case getWorkers = "http://localhost/v1/workers"
+        case addWorker = "http://localhost/v1/addworker"
+        case deleteWorker = "http://localhost/v1/deleteworker"
     }
     private let headers: [String: String] = [
         "Content-Type": "application/json"
@@ -275,6 +282,53 @@ class Requests {
         
         return request;
     }
+    func getCinemasWithAddress(city: City = UserData.instance.city!, formats: [Format] = [], address: String, completion: ((_ success: Bool, _ cinemas: [Cinema]?) -> Void)?) -> Alamofire.DataRequest {
+        var headers: [String: String] = [
+            "X-Session-Token": UserData.instance.token!
+        ]
+        headers.merge(self.headers) { (current, _) -> String in
+            current
+        }
+        let formatsIds = formats.map { format -> Int in
+            return format.id
+        }
+        let params: Parameters = [
+            "cityId": city.id,
+            "formats": formatsIds,
+            "address": address
+        ]
+        
+        let request = Alamofire.request(Urls.getCinemas.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers);
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let jsonCinemas = json["cinemas"].dictionaryValue
+            
+            let cinemas = jsonCinemas.map({ (key: String, jsonCinema: JSON) -> Cinema in
+                let id = Int(key)!
+                let name = jsonCinema["name"].stringValue
+                let address = jsonCinema["address"].stringValue
+                let formats = jsonCinema["formats"].arrayValue.map { Format(id: $0.dictionaryValue["id"]!.intValue, name: $0.dictionaryValue["name"]!.stringValue) }
+                return Cinema(id: id, name: name, address: address, formats: formats)
+            })
+            
+            completion?(true, cinemas)
+        }
+        
+        return request;
+    }
     
     func getFilms(cinemaId: Int?, genres: [Genre] = [], partsOfDay: [PartsOfDay] = [], completion: ((_ success: Bool, _ films: [Film]?) -> Void)?) -> Alamofire.DataRequest {
         var headers: [String: String] = [
@@ -432,5 +486,233 @@ class Requests {
         }
         
         return request
+    }
+    
+    func getFoodTypes(completion: ((_ success: Bool, _ foodTypes: [FoodType]?) -> Void)?) -> Alamofire.DataRequest {
+        let request = Alamofire.request(Urls.getFoodTypes.rawValue, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let foodTypes = json["foodTypes"].arrayValue.map({ jsonFoodType -> FoodType in
+                let foodId = jsonFoodType["id"].intValue
+                let foodName = jsonFoodType["name"].stringValue
+                return FoodType(id: foodId, name: foodName)
+            })
+            
+            completion?(true, foodTypes)
+        }
+        
+        return request
+    }
+    
+    func getFood(typeId: Int?, cinemaId: Int, completion: ((_ success: Bool, _ food: [Food]?) -> Void)?) -> Alamofire.DataRequest {
+        var params: [String: Any] = [
+            "cinemaId": cinemaId
+        ]
+        if let typeId = typeId {
+            params["typeId"] = typeId
+        }
+        
+        let request = Alamofire.request(Urls.getFood.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let food = json["food"].arrayValue.map({ jsonFood -> Food in
+                let foodName = jsonFood["name"].stringValue
+                let foodCost = jsonFood["cost"].intValue
+                return Food(name: foodName, cost: foodCost)
+            })
+            
+            completion?(true, food)
+        }
+        
+        return request
+    }
+    
+    func getPromotions(cinemaId: Int, monthNumber: Int?, completion: ((_ success: Bool, _ promotions: [Promotion]?) -> Void)?) -> Alamofire.DataRequest {
+        let now = Date()
+        let currentMonth = Calendar.current.component(.month, from: now)
+        
+        let monthNum = monthNumber ?? currentMonth
+        let params: [String: Any] = [
+            "cinemaId": cinemaId,
+            "monthNumber": monthNum
+        ]
+        
+        let request = Alamofire.request(Urls.getPromotions.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let promotions = json["promotions"].arrayValue.map({ jsonPromotion -> Promotion in
+                let id = jsonPromotion["id"].intValue
+                let name = jsonPromotion["name"].stringValue
+                let description = jsonPromotion["description"].stringValue
+                return Promotion(id: id, name: name, description: description)
+            })
+            
+            completion?(true, promotions)
+        }
+        
+        return request
+    }
+    
+    func getActors(filmId: Int, sex: String, completion: ((_ success: Bool, _ actors: [String]?) -> Void)?) -> Alamofire.DataRequest {
+        let params: [String: Any] = [
+            "filmId": filmId,
+            "sex": sex
+        ]
+        
+        let request = Alamofire.request(Urls.getActors.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let actors = json["actors"].arrayValue.map({ (jsonActor) -> String in
+                return jsonActor["name"].stringValue
+            })
+            
+            completion?(true, actors)
+        }
+        
+        return request
+    }
+    
+    func getWorkers(cinemaName: String, salary: Int, completion: ((_ success: Bool, _ workers: [Worker]?) -> Void)?) -> Alamofire.DataRequest {
+        let params: [String: Any] = [
+            "cinemaName": cinemaName,
+            "salary": salary
+        ]
+        let request = Alamofire.request(Urls.getWorkers.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+        
+        request.responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false, nil)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false, nil)
+                return
+            }
+            
+            let workers = json["workers"].arrayValue.map({ jsonWorker -> Worker in
+                let name = jsonWorker["name"].stringValue
+                let date = jsonWorker["date"].intValue
+                let sex = jsonWorker["sex"].stringValue
+                let phoneNumber = jsonWorker["phoneNumber"].stringValue
+                let position = jsonWorker["position"].stringValue
+                return Worker(name: name, date: date, sex: sex, phoneNumber: phoneNumber, position: position)
+            })
+            
+            completion?(true, workers)
+        }
+        
+        return request
+    }
+    
+    func addUser(name: String, date: Int, sex: String, phoneNumber: String, position: String, salary: Int, completion: ((_ success: Bool) -> Void)?) {
+        let params: [String: Any] = [
+            "name": name,
+            "date": date,
+            "sex": sex,
+            "phoneNumber": phoneNumber,
+            "position": position,
+            "salary": salary
+        ]
+        Alamofire.request(Urls.addWorker.rawValue, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false)
+                return
+            }
+            
+            completion?(true)
+        }
+    }
+    
+    func deleteWorker(phoneNumber: String, completion: ((_ success: Bool) -> Void)?) {
+        let params: [String: Any] = [
+            "phoneNumber": phoneNumber
+        ]
+        Alamofire.request(Urls.deleteWorker.rawValue, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            if let error = response.error {
+                debugPrint(error)
+                completion?(false)
+                return
+            }
+            
+            guard let result = response.result.value else { return }
+            let json = JSON(result)
+            
+            if !json["success"].boolValue {
+                completion?(false)
+                return
+            }
+            
+            completion?(true)
+        }
     }
 }

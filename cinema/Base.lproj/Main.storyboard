@@ -81,6 +81,14 @@
             </objects>
             <point key="canvasLocation" x="1006" y="721"/>
         </scene>
+        <!--workersNavVC-->
+        <scene sceneID="LLA-NH-1mg">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="workersNavVC" storyboardName="Workers" referencedIdentifier="workersNavVC" id="GYy-Dn-Gm1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d2F-my-k52" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="770"/>
+        </scene>
         <!--filterVC-->
         <scene sceneID="aDi-Hn-zwO">
             <objects>

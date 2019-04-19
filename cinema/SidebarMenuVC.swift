@@ -44,8 +44,7 @@ class SidebarMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         ]
         
         if UserData.instance.accessLevel != 0 {
-            // add some items like USERS, PERSONAL ...
-//            popupItems.append()
+            popupItems.append(PopupItem(name: "Работники", id: "workersNavVC"))
         }
     }
     

@@ -11,6 +11,8 @@ import UIKit
 class CustomPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     enum PickerViewFor {
         case Cities
+        case FoodTypes
+        case Months
     }
     
     var pickerDidChange: ((_ selected: Any, _ index: Int?) -> Void)?
@@ -24,6 +26,12 @@ class CustomPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSour
         if typeObjects == .Cities {
             let city = data[row] as! City
             textFieldBeingEdited.text = city.name
+        } else if typeObjects == .FoodTypes {
+            let foodType = data[row] as! FoodType
+            textFieldBeingEdited.text = foodType.name
+        } else if typeObjects == .Months {
+            let monthName = data[row] as! String
+            textFieldBeingEdited.text = monthName
         }
         selected = data[row]
         pickerDidChange?(selected!, row)
@@ -41,6 +49,12 @@ class CustomPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSour
         if typeObjects == .Cities {
             let city = data[row] as! City
             return city.name
+        } else if typeObjects == .FoodTypes {
+            let foodType = data[row] as! FoodType
+            return foodType.name
+        } else if typeObjects == .Months {
+            let monthName = data[row] as! String
+            return monthName
         }
         
         return ""

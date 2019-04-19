@@ -15,7 +15,23 @@ enum SelectCellFor {
 }
 enum PickerCellFor {
     case Cities
+    case FoodTypes
+    case Months
 }
+let months = [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь",
+]
 
 enum PartsOfDay: String, CaseIterable {
     case morning = "Утро"

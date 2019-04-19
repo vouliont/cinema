@@ -45,7 +45,7 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
         
         getFilmsRequest = Requests.instance.getFilms(cinemaId: cinemaId, completion: { success, films in
             if success {
-                self.films = films!
+                self.films = films ?? []
                 self.filmsTableView.reloadData()
             }
             self.getFilmsRequest = nil
@@ -59,13 +59,16 @@ class FilmsListVC: PopupVC, UITableViewDelegate, UITableViewDataSource {
             if !success { return }
             
             self.filmsFilterCells = [
-                FilterCell(identifier: "selectCell", items: genres!.map({ genre -> SelectFilter in
-                    return SelectFilter(data: genre, typeObjects: .Genre);
-                })),
                 FilterCell(identifier: "selectCell", items: PartsOfDay.allCases.map({ partOfDay -> SelectFilter in
                     return SelectFilter(data: partOfDay, typeObjects: .PartOfDay)
                 }))
             ]
+            if let genres = genres {
+                self.filmsFilterCells.insert(
+                    FilterCell(identifier: "selectCell", items: genres.map({ genre -> SelectFilter in
+                        return SelectFilter(data: genre, typeObjects: .Genre);
+                    })), at: 0)
+            }
             self.filmsFilterVC.headers = self.filmsFilterHeaders
             self.filmsFilterVC.data = self.filmsFilterCells
             self.filmsFilterVC.filtersTableView.reloadData()
